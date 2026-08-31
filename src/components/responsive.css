@@ -1,0 +1,140 @@
+/* ============================================
+   ClawnCore - Global Responsive Styles
+   ============================================ */
+
+/* Prevent iOS zoom on input focus */
+@supports (-webkit-touch-callout: none) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+/* Ensure proper viewport handling */
+@viewport {
+  width: device-width;
+  zoom: 1.0;
+}
+
+/* ============================================
+   Small Screens (mobile-first base)
+   ============================================ */
+@media (max-width: 640px) {
+  /* Reduce section padding on mobile */
+  section {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  /* Hero adjustments */
+  .hero-content h1 {
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Force single-column grids on mobile */
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Ensure containers don't overflow */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 100%;
+  }
+
+  /* Make all images responsive */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Fix horizontal overflow from absolute positioned elements */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Mobile-friendly button sizing */
+  button, .btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Touch-friendly link spacing */
+  a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Prevent text overflow */
+  h1, h2, h3, h4, h5, h6, p, span, div {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  /* Scrollable cards horizontally */
+  .scroll-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ============================================
+   Medium Screens (tablets)
+   ============================================ */
+@media (min-width: 641px) and (max-width: 1024px) {
+  section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+/* ============================================
+   Fix common mobile issues
+   ============================================ */
+
+/* Ensure text doesn't get too small */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .text-xs {
+    font-size: 0.65rem !important;
+  }
+}
+
+/* Fix for video elements on mobile */
+video {
+  object-fit: cover;
+}
+
+/* Fix for fixed/sticky headers on mobile */
+@supports (position: sticky) {
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+}
+
+/* Smooth scrolling for all */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Fix for iOS safe areas */
+@supports (padding: env(safe-area-inset-top)) {
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
