@@ -9,12 +9,12 @@ import { useToast } from '@/hooks/use-toast';
 import { Star, ShoppingCart, ChevronRight } from 'lucide-react';
 
 const categories = [
-  { name: 'Drones', slug: 'drones' },
-  { name: 'Seeds', slug: 'seeds' },
-  { name: 'Fertilizers', slug: 'fertilizers' },
-  { name: 'Sensors', slug: 'sensors' },
-  { name: 'Equipment', slug: 'equipment' },
-  { name: 'Irrigation', slug: 'irrigation' },
+  { name: 'Drones', slug: 'drones', image: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=400&q=80' },
+  { name: 'Seeds', slug: 'seeds', image: 'https://images.unsplash.com/photo-1437252611977-07f74518abd7?auto=format&fit=crop&w=400&q=80' },
+  { name: 'Fertilizers', slug: 'fertilizers', image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=400&q=80' },
+  { name: 'Sensors', slug: 'sensors', image: 'https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=400&q=80' },
+  { name: 'Equipment', slug: 'equipment', image: 'https://images.unsplash.com/photo-1530267981375-f0de937f5f13?auto=format&fit=crop&w=400&q=80' },
+  { name: 'Irrigation', slug: 'irrigation', image: 'https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?auto=format&fit=crop&w=400&q=80' },
 ];
 
 export default function StoreHome() {
@@ -46,19 +46,23 @@ export default function StoreHome() {
 
   return (
     <StoreLayout>
-      {/* Hero — clean, product-focused */}
-      <section className="relative py-16 sm:py-24 bg-cc-darker overflow-hidden">
+      {/* Hero — with background image */}
+      <section className="relative py-16 sm:py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1600&q=80" alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-cc-darker via-cc-darker/80 to-cc-darker/40" />
+        </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl">
             <p className="text-xs font-mono uppercase tracking-[0.2em] text-nvidia-500 mb-4">ClawnCore Store</p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
               Agricultural<br />Equipment & Supplies
             </h1>
-            <p className="text-lg text-white/60 mb-8 max-w-xl">
+            <p className="text-lg text-white/70 mb-8 max-w-xl">
               Professional drones, premium seeds, precision sensors, and irrigation systems for modern farming operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-white text-black hover:bg-white/90 font-semibold" onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}>
+              <Button size="lg" className="bg-nvidia-500 hover:bg-nvidia-600 text-black font-semibold" onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}>
                 Browse Products
               </Button>
               <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 font-semibold" onClick={() => navigate('/store?sort=featured')}>
@@ -80,14 +84,34 @@ export default function StoreHome() {
               </span>
             </Link>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {categories.map((cat) => (
               <Link key={cat.slug} href={`/store/category/${cat.slug}`}>
-                <div className="group cursor-pointer rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-4 text-center hover:border-nvidia-500/50 transition-colors">
-                  <p className="font-semibold text-sm text-gray-900 dark:text-white">{cat.name}</p>
+                <div className="group cursor-pointer rounded-xl overflow-hidden border border-gray-200 dark:border-white/10 hover:border-nvidia-500/50 transition-all">
+                  <div className="relative h-32 overflow-hidden">
+                    <img src={cat.image} alt={cat.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <p className="absolute bottom-3 left-3 font-semibold text-sm text-white">{cat.name}</p>
+                  </div>
                 </div>
               </Link>
             ))}
+          </div>
+        </section>
+
+        {/* Promo Banner */}
+        <section className="mb-16 rounded-2xl overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=1200&q=80" alt="Farm equipment" className="w-full h-48 sm:h-64 object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-cc-darker/90 via-cc-darker/60 to-transparent" />
+          <div className="absolute inset-0 flex items-center px-8 sm:px-12">
+            <div>
+              <p className="text-xs font-mono uppercase tracking-[0.2em] text-nvidia-500 mb-2">Limited Time</p>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Season Sale — Up to 25% Off</h3>
+              <p className="text-white/60 text-sm mb-4 max-w-md">Stock up on seeds, fertilizers, and irrigation supplies for the upcoming season.</p>
+              <Button size="sm" className="bg-nvidia-500 hover:bg-nvidia-600 text-black font-semibold" onClick={() => navigate('/store?sort=featured')}>
+                Shop Deals
+              </Button>
+            </div>
           </div>
         </section>
 
@@ -127,15 +151,21 @@ export default function StoreHome() {
           </div>
         )}
 
-        {/* CTA — clean */}
-        <section className="text-center p-10 bg-gray-100 dark:bg-white/5 rounded-2xl border border-gray-200 dark:border-white/10">
-          <h3 className="text-2xl font-bold mb-2">Need Help Choosing?</h3>
-          <p className="text-muted-foreground max-w-lg mx-auto mb-6">
-            Contact our team for product recommendations and bulk order pricing.
-          </p>
-          <Button className="bg-nvidia-500 hover:bg-nvidia-600 text-black font-semibold" onClick={() => navigate('/get-started')}>
-            Contact Sales
-          </Button>
+        {/* CTA — with image */}
+        <section className="relative rounded-2xl overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=1200&q=80" alt="Farm landscape" className="w-full h-64 sm:h-80 object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-cc-darker/90 to-cc-darker/50" />
+          <div className="absolute inset-0 flex items-center justify-center text-center px-6">
+            <div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">Need Help Choosing?</h3>
+              <p className="text-white/60 max-w-lg mx-auto mb-6">
+                Contact our team for product recommendations and bulk order pricing.
+              </p>
+              <Button className="bg-nvidia-500 hover:bg-nvidia-600 text-black font-semibold" onClick={() => navigate('/get-started')}>
+                Contact Sales
+              </Button>
+            </div>
+          </div>
         </section>
       </div>
     </StoreLayout>

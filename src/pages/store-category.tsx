@@ -12,13 +12,13 @@ import { ChevronLeft, ChevronRight, Star, ShoppingCart, Sprout, Package } from '
 
 const ITEMS_PER_PAGE = 12;
 
-const categoryMeta: Record<string, { title: string; desc: string }> = {
-  drones: { title: 'Agricultural Drones', desc: 'Mapping, spraying, and crop monitoring aircraft' },
-  seeds: { title: 'Premium Seeds', desc: 'High-yield, disease-resistant seed varieties' },
-  fertilizers: { title: 'Fertilizers & Nutrients', desc: 'Organic and synthetic crop nutrition' },
-  sensors: { title: 'Sensors & Monitoring', desc: 'Soil, weather, and crop health sensors' },
-  equipment: { title: 'Farm Equipment', desc: 'Machinery and tools for every task' },
-  irrigation: { title: 'Irrigation Systems', desc: 'Drip, sprinkler, and pump systems' },
+const categoryMeta: Record<string, { title: string; desc: string; image: string }> = {
+  drones: { title: 'Agricultural Drones', desc: 'Mapping, spraying, and crop monitoring aircraft', image: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80' },
+  seeds: { title: 'Premium Seeds', desc: 'High-yield, disease-resistant seed varieties', image: 'https://images.unsplash.com/photo-1437252611977-07f74518abd7?auto=format&fit=crop&w=1200&q=80' },
+  fertilizers: { title: 'Fertilizers & Nutrients', desc: 'Organic and synthetic crop nutrition', image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1200&q=80' },
+  sensors: { title: 'Sensors & Monitoring', desc: 'Soil, weather, and crop health sensors', image: 'https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=1200&q=80' },
+  equipment: { title: 'Farm Equipment', desc: 'Machinery and tools for every task', image: 'https://images.unsplash.com/photo-1530267981375-f0de937f5f13?auto=format&fit=crop&w=1200&q=80' },
+  irrigation: { title: 'Irrigation Systems', desc: 'Drip, sprinkler, and pump systems', image: 'https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?auto=format&fit=crop&w=1200&q=80' },
 };
 
 export default function StoreCategory() {
@@ -32,7 +32,7 @@ export default function StoreCategory() {
   const [totalCount, setTotalCount] = useState(0);
 
   const category = location.split('/store/category/')[1]?.split('?')[0] || 'drones';
-  const meta = categoryMeta[category] || { title: category, desc: '' };
+  const meta = categoryMeta[category] || { title: category, desc: '', image: '' };
 
   const fetchProductsData = useCallback(async () => {
     setLoading(true);
@@ -65,9 +65,13 @@ export default function StoreCategory() {
 
   return (
     <StoreLayout>
-      {/* Category Header */}
-      <section className="py-12 sm:py-16 bg-cc-darker">
-        <div className="container mx-auto px-4">
+      {/* Category Header with banner image */}
+      <section className="relative py-12 sm:py-16 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={meta.image} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-cc-darker via-cc-darker/80 to-cc-darker/40" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="flex items-center gap-2 text-white/60 text-sm mb-3">
             <span className="cursor-pointer hover:text-white" onClick={() => navigate('/store')}>Store</span>
             <ChevronRight className="h-3 w-3" />
