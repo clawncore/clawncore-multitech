@@ -34,6 +34,13 @@ const ProductDetail = React.lazy(() => import("@/pages/product-detail"));
 const VendorDashboard = React.lazy(() => import("@/pages/vendor-dashboard"));
 const Cart = React.lazy(() => import("@/pages/cart"));
 const Partnerships = React.lazy(() => import("@/pages/partnerships"));
+const StoreHome = React.lazy(() => import("@/pages/store-home"));
+const StoreCategory = React.lazy(() => import("@/pages/store-category"));
+const StoreProduct = React.lazy(() => import("@/pages/store-product"));
+const StoreCart = React.lazy(() => import("@/pages/store-cart"));
+const StoreCheckout = React.lazy(() => import("@/pages/store-checkout"));
+const StoreConfirmation = React.lazy(() => import("@/pages/store-confirmation"));
+const StoreOrders = React.lazy(() => import("@/pages/store-orders"));
 
 function RouterWrapper() {
   const { loginModalOpen, setLoginModalOpen } = useAuth();
@@ -72,6 +79,13 @@ function RouterWrapper() {
           <Route path="/cart" component={Cart} />
           <Route path="/clawn-academy" component={ClawnAcademy} />
           <Route path="/partnerships" component={Partnerships} />
+          <Route path="/store" component={StoreHome} />
+          <Route path="/store/category/:category" component={StoreCategory} />
+          <Route path="/store/product/:productId" component={StoreProduct} />
+          <Route path="/store/cart" component={StoreCart} />
+          <Route path="/store/checkout" component={StoreCheckout} />
+          <Route path="/store/order/:orderId" component={StoreConfirmation} />
+          <Route path="/store/orders" component={StoreOrders} />
           <Route component={NotFound} />
         </Switch>
       </Suspense>

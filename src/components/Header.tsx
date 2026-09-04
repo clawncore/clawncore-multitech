@@ -29,6 +29,7 @@ const SOLUTIONS = [
   { name: 'Clawn Academy', desc: 'Courses, certifications, and training', href: '/clawn-academy' },
   { name: 'ClawnAI Core', desc: 'Unified ecosystem orchestration', href: '/clawn-ai' },
   { name: 'Partner Programme', desc: 'Grow together with ClawnCore', href: '/partnerships' },
+  { name: 'Agri Store', desc: 'Agricultural products & equipment', href: '/store' },
 ];
 
 const RESOURCES = [
@@ -142,6 +143,7 @@ export function Header() {
             { name: 'Research', href: '/data-analytics' },
             { name: 'Marketplace', href: '/marketplace' },
             { name: 'Academy', href: '/clawn-academy' },
+            { name: 'Agri Store', href: '/store' },
             { name: 'Company', href: '/#about' },
           ].map((item) => (
             <Link key={item.name} href={item.href}>
