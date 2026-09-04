@@ -14,7 +14,7 @@ const serviceData = {
     description: 'Advanced UAV solutions for surveillance, agriculture, and commercial applications with AI-powered automation.',
     image: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600',
     features: [
-      'Autonomous flight systems',
+      'Automated flight systems',
       'Real-time data transmission',
       'AI-powered object detection',
       'Weather-resistant design',
@@ -158,7 +158,7 @@ const serviceData = {
   iot: {
     title: 'IoT Solutions',
     icon: '🌐',
-    description: 'Connected device ecosystems and smart automation for industrial and commercial applications.',
+    description: 'Connected device management and smart automation for industrial and commercial applications.',
     image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600',
     features: [
       'Device connectivity',
@@ -236,9 +236,7 @@ export default function ServiceDetail() {
                   <span className="text-xl sm:text-2xl">{service.icon}</span>
                 </div>
                 <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold">
-                  <span className="bg-gradient-to-r from-blue-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
-                    {service.title}
-                  </span>
+                  {service.title}
                 </h1>
               </div>
 

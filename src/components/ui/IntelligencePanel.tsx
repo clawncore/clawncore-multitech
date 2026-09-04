@@ -97,7 +97,7 @@ export function IntelligencePanel({ activeModule, onClose }: IntelligencePanelPr
               <Button
                 className="w-full bg-blue-600/20 hover:bg-blue-500/30 text-blue-50 border border-blue-500/30 h-12 rounded-xl transition-all duration-300 font-medium tracking-wide shadow-[0_0_20px_rgba(59,130,246,0.1)] hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]"
               >
-                Access Neural Interface
+                Access Dashboard
                 <ArrowRight className="ml-2 h-4 w-4 opacity-70" />
               </Button>
             </motion.div>

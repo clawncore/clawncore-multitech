@@ -4,10 +4,10 @@ import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 
 const CARDS = [
   {
-    category: 'Agriculture | AI',
-    title: 'Autonomous Drone Grid',
+    category: 'Agriculture | Precision',
+    title: 'Precision Drone Fleet',
     description:
-      'Our drone swarms scan 2,450 acres in real-time, identifying crop deficiencies and triggering robotic precision care — increasing yields by up to 40%.',
+      'Our fleet scans 2,450 acres in real-time, identifying crop deficiencies and triggering precision care — increasing yields by up to 40%.',
     image: '/drone hero.png',
   },
   {
@@ -18,22 +18,22 @@ const CARDS = [
     image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80',
   },
   {
-    category: 'AI | Machine Learning',
-    title: 'Distributed Neural Intelligence',
+    category: 'Data | Analytics',
+    title: 'Data-Driven Analytics',
     description:
-      'ClawnAI processes 2.4 billion parameters per inference cycle — continuously learning from field data to make smarter decisions autonomously.',
+      'ClawnAI processes 2.4 billion parameters per cycle — continuously learning from field data to support smarter, faster decisions.',
     image: '/optic hand naturing .png',
   },
   {
     category: 'Cloud | Infrastructure',
-    title: 'Global Cloud Nexus',
+    title: 'Global Cloud Platform',
     description:
-      'A cloud-native telemetry layer orchestrating terabytes of concurrent data streams across 450+ decentralized edge nodes with 99.999% uptime.',
+      'A cloud-native telemetry layer managing terabytes of concurrent data streams across 450+ edge nodes with 99.999% uptime.',
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80',
   },
   {
-    category: 'Aerospace | Autonomous',
-    title: 'Swarm Aerial Intelligence',
+    category: 'Aerospace | Flight Systems',
+    title: 'Aerial Intelligence Network',
     description:
       'Coordinated aerial networks operating at Mach 0.8 with ±2cm positional precision across complex urban and agricultural environments.',
     image: 'https://images.unsplash.com/photo-1579820010410-c10411aaaa88?auto=format&fit=crop&w=600&q=80',
@@ -68,8 +68,8 @@ export function About() {
               About ClawnCore
             </h2>
             <p className="text-gray-500 dark:text-slate-400 font-light leading-relaxed text-sm sm:text-base mb-6 sm:mb-8">
-              Founded in 2025, ClawnCore Multitech is building the intelligent infrastructure
-              that powers the next era of autonomous civilization — across agriculture, defence,
+              Founded in 2025, ClawnCore Multitech is building the technology infrastructure
+              that powers modern industry — across agriculture, defence,
               cloud and cybersecurity.
             </p>
             <a href="#vision-roadmap" className="inline-flex items-center gap-2 text-nvidia-500 hover:text-nvidia-400 text-sm font-semibold transition-colors group">

@@ -10,11 +10,11 @@ const SLIDES = [
     id: 1,
     type: 'video',
     src: 'https://res.cloudinary.com/cmunbztt/video/upload/v1788105943/agriculture-hero.mp4',
-    category: 'Autonomous Systems',
+    category: 'Smart Agriculture',
     categoryColor: '#34d399',
     title: 'Smart Agriculture',
-    subtitle: 'Autonomous Drone Swarms',
-    story: 'Precision agriculture powered by autonomous intelligence. From field mapping to crop-health analytics — intelligence that grows with every season.',
+    subtitle: 'Precision Drone Systems',
+    story: 'Precision agriculture powered by data-driven technology. From field mapping to crop-health analytics — tools that help you grow smarter every season.',
   },
   {
     id: 2,
@@ -24,17 +24,17 @@ const SLIDES = [
     categoryColor: '#2563eb',
     title: 'Cyber Defense',
     subtitle: 'Quantum-Secure Infrastructure',
-    story: 'Zero-trust architecture built for autonomous networks. Quantum-resistant threat intelligence with real-time behavioral analysis.',
+    story: 'Zero-trust architecture built for enterprise networks. Quantum-resistant threat intelligence with real-time behavioral analysis.',
   },
   {
     id: 3,
     type: 'video',
     src: 'https://res.cloudinary.com/cmunbztt/video/upload/v1788105923/smart_intelligent_systems.mp4',
-    category: 'Neural Intelligence',
+    category: 'Data Analytics',
     categoryColor: '#76B900',
-    title: 'Predictive AI',
-    subtitle: 'Real-Time Autonomous Response',
-    story: 'Adaptive neural systems that learn from every data point — continuously refining decisions, predictions, and autonomous actions.',
+    title: 'Predictive Analytics',
+    subtitle: 'Real-Time Data Processing',
+    story: 'Advanced analytics that learn from every data point — continuously refining decisions, predictions, and operational actions.',
   },
 ];
 
@@ -175,7 +175,7 @@ export function Hero() {
             {/* Tesla-style dual CTA */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button
-                className="bg-nvidia-500 hover:bg-nvidia-600 text-black font-bold w-full sm:w-auto h-12 sm:h-13 px-8 text-sm rounded-lg transition-all animate-pulse-glow"
+                className="bg-nvidia-500 hover:bg-nvidia-600 text-black font-bold w-full sm:w-auto h-12 sm:h-13 px-8 text-sm rounded-lg transition-all"
                 onClick={() => navigate('/get-started')}
               >
                 Get Started
@@ -229,7 +229,7 @@ export function Hero() {
               >
                 <div className={`w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
                   index === current
-                    ? 'bg-nvidia-500 scale-125 shadow-[0_0_10px_rgba(118,185,0,0.6)]'
+                    ? 'bg-nvidia-500 scale-125'
                     : 'bg-white/20 group-hover:bg-white/40'
                 }`} />
                 <span className={`text-[9px] sm:text-[10px] font-mono uppercase tracking-wider transition-all duration-300 hidden sm:inline ${

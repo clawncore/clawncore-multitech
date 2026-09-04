@@ -88,7 +88,7 @@ export function Footer() {
               <img src="/drone hero.png" alt="ClawnAI" loading="lazy" className="w-full h-36 object-cover rounded-xl mb-4" />
               <p className="text-xs font-mono text-nvidia-500 uppercase tracking-wider mb-2">Featured Platform</p>
               <h4 className="text-xl font-bold text-white mb-2">ClawnAI Core</h4>
-              <p className="text-base text-slate-300 mb-4">Unified intelligence orchestrating every solution across the multitech ecosystem.</p>
+              <p className="text-base text-slate-300 mb-4">Complete platform management for all ClawnCore services and solutions.</p>
               <Link href="/clawn-ai">
                 <span className="inline-flex items-center gap-1.5 text-base font-bold text-nvidia-500 hover:text-nvidia-400 cursor-pointer transition-colors">
                   Explore Platform <ArrowRight className="w-4 h-4" />

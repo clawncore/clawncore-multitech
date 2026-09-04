@@ -148,9 +148,7 @@ export default function ClaudeAcademy() {
             </Badge>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
               Master the Future of{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Technology
-              </span>
+              Technology
             </h1>
             <p className="text-lg sm:text-xl text-white/70 mb-8 max-w-2xl mx-auto">
               Industry-leading courses in AI, Cloud, Cybersecurity, and Data Science.

@@ -195,9 +195,7 @@ export default function CareersPage() {
             </Badge>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
               Build the Future{' '}
-              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                With Us
-              </span>
+              With Us
             </h1>
             <p className="text-lg sm:text-xl text-white/70 mb-8 max-w-2xl mx-auto">
               Join a team of engineers, researchers, and dreamers pushing the boundaries of AI, cloud, and security.

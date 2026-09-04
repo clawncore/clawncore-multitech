@@ -25,7 +25,7 @@ export function OpportunityPanel({ onHover, onApply }: Props) {
       
       <div className="p-6 border-b border-slate-100 bg-slate-50/50">
         <h2 className="text-xl font-bold text-slate-900 mb-1">Open Opportunities</h2>
-        <p className="text-sm text-slate-500">Join the ecosystem building the future.</p>
+        <p className="text-sm text-slate-500">Build the future with ClawnCore.</p>
       </div>
 
       <ScrollArea className="flex-1 p-4">

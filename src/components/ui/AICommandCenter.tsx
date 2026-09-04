@@ -125,7 +125,7 @@ export function AICommandCenter({ hook }: AICommandCenterProps) {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               disabled={status !== 'idle'}
-              placeholder={status === 'idle' ? "Command the ecosystem..." : "Processing neural request..."}
+              placeholder={status === 'idle' ? "Type a command..." : "Processing request..."}
               className="flex-1 bg-transparent border-none text-slate-900 px-4 py-3 focus:outline-none placeholder:text-slate-400 disabled:opacity-50"
             />
             <Button 

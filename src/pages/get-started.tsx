@@ -145,9 +145,7 @@ export default function GetStarted() {
       <section className="py-12 sm:py-16 md:py-24 bg-gradient-to-br from-blue-600 to-pink-50 dark:from-blue-600 dark:to-pink-950">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
-            <span className="bg-gradient-to-r from-blue-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
-              Get Started with ClawnCore
-            </span>
+            Get Started with ClawnCore
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-10">
             Transform your business with our cutting-edge technology solutions.

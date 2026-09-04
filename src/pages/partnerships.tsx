@@ -204,9 +204,7 @@ export default function Partnerships() {
             </Badge>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
               Grow Together with{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                ClawnCore
-              </span>
+              ClawnCore
             </h1>
             <p className="text-lg sm:text-xl text-white/70 mb-8 max-w-2xl mx-auto">
               Join our global partner network. Build, sell, and deliver cutting-edge AI, cloud, and security solutions together.

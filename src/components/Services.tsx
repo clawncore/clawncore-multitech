@@ -70,7 +70,7 @@ const services = [
     id: 'drone',
     icon: '🚁',
     title: 'Drone Technology',
-    description: 'Advanced UAV solutions for surveillance, agriculture, and commercial applications with AI-powered automation.',
+    description: 'Advanced UAV solutions for surveillance, agriculture, and commercial applications with automated flight systems.',
     color: 'from-blue-600 to-cyan-500',
     hoverColor: 'hover:border-blue-300',
     textColor: 'text-blue-600'
@@ -98,7 +98,7 @@ const services = [
     icon: '🧠',
     title: 'Clawn AI Platform',
     description: 'Proprietary AI platform for machine learning, natural language processing, and predictive analytics.',
-    color: 'from-blue-600 via-pink-600 to-blue-600',
+    color: 'from-blue-600 to-blue-800',
     hoverColor: 'hover:border-blue-300',
     textColor: 'text-blue-600'
   },
@@ -133,7 +133,7 @@ const services = [
     id: 'iot',
     icon: '🌐',
     title: 'IoT Solutions',
-    description: 'Connected device ecosystems and smart automation for industrial and commercial applications.',
+    description: 'Connected device management and smart automation for industrial and commercial applications.',
     color: 'from-pink-600 to-pink-800',
     hoverColor: 'hover:border-pink-600/50',
     textColor: 'text-pink-600'
@@ -146,9 +146,7 @@ export function Services() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
-              Our Services
-            </span>
+            Our Services
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
             Comprehensive technology solutions designed to accelerate your digital transformation journey.

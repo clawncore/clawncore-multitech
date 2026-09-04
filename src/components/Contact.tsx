@@ -106,7 +106,7 @@ export function Contact() {
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ready to transform your business with intelligent technology solutions? Let's start the conversation.
+            Ready to transform your business with technology solutions? Let's start the conversation.
           </p>
         </div>
 

@@ -46,7 +46,7 @@ export function PersistentCTA() {
           <div className="container mx-auto px-4 pb-4 sm:pb-6">
             <div className="pointer-events-auto mx-auto max-w-2xl bg-white/95 dark:bg-cc-dark/95 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-2xl p-3 sm:p-4 shadow-2xl flex items-center justify-between gap-3">
               <div className="flex items-center gap-3 min-w-0">
-                <div className="w-2 h-2 rounded-full bg-nvidia-500 animate-pulse-glow hidden sm:block flex-shrink-0" />
+                <div className="w-2 h-2 rounded-full bg-nvidia-500 hidden sm:block flex-shrink-0" />
                 <span className="text-xs sm:text-sm text-gray-600 dark:text-slate-300 truncate hidden sm:block">Ready to transform?</span>
               </div>
               <div className="flex items-center gap-2 sm:gap-3 ml-auto">

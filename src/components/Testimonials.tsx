@@ -27,9 +27,7 @@ export function Testimonials() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
-              What Our Clients Say
-            </span>
+            What Our Clients Say
           </h2>
           <p className="text-lg text-muted-foreground">Real feedback from companies we've helped transform</p>
         </div>

@@ -96,7 +96,6 @@ export default {
                 "slide-in-left": "slideInLeft 0.8s ease-out forwards",
                 "slide-in-right": "slideInRight 0.8s ease-out forwards",
                 "scale-in": "scaleIn 0.6s ease-out forwards",
-                "pulse-glow": "pulseGlow 2s ease-in-out infinite",
                 "slide-up": "slideUp 0.5s ease-out forwards",
                 "shimmer": "shimmer 2s linear infinite",
             },
@@ -132,10 +131,6 @@ export default {
                 scaleIn: {
                     from: { opacity: "0", transform: "scale(0.9)" },
                     to: { opacity: "1", transform: "scale(1)" },
-                },
-                pulseGlow: {
-                    "0%, 100%": { boxShadow: "0 0 20px rgba(118, 185, 0, 0.3)" },
-                    "50%": { boxShadow: "0 0 40px rgba(118, 185, 0, 0.6)" },
                 },
                 slideUp: {
                     from: { opacity: "0", transform: "translateY(100%)" },

@@ -13,7 +13,7 @@ import { ContactInitiation } from '@/sections/ContactInitiation';
 
 const SECTIONS = [
   { id: 'platforms', label: 'Platforms' },
-  { id: 'ecosystem', label: 'Ecosystem' },
+  { id: 'ecosystem', label: 'Solutions' },
   { id: 'about', label: 'About' },
   { id: 'vision', label: 'Vision' },
   { id: 'systems', label: 'Systems' },

@@ -14,7 +14,7 @@ const PLATFORMS = [
   { name: 'Smart Agriculture', tagline: 'Precision farming', href: '/agriculture', image: '/drone hero.png', color: '#34d399' },
   { name: 'Cybersecurity', tagline: 'Zero-trust defense', href: '/cybersecurity', image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=400&q=70', color: '#2563eb' },
   { name: 'Cloud Infrastructure', tagline: 'Global nexus', href: '/cloud', image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=70', color: '#06b6d4' },
-  { name: 'AI & Machine Learning', tagline: 'Neural systems', href: '/ml', image: '/optic hand naturing .png', color: '#76B900' },
+  { name: 'Data & Analytics', tagline: 'Intelligence platform', href: '/ml', image: '/optic hand naturing .png', color: '#76B900' },
   { name: 'Data Analytics', tagline: 'Real-time insights', href: '/data-analytics', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=70', color: '#fbbf24' },
   { name: 'ClawnAI Platform', tagline: 'Orchestration core', href: '/clawn-ai', image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=400&q=70', color: '#76B900' },
 ];
@@ -23,11 +23,11 @@ const SOLUTIONS = [
   { name: 'Smart Agriculture', desc: 'Drone-powered precision farming', href: '/agriculture' },
   { name: 'Infrastructure Security', desc: 'Quantum-resistant threat defense', href: '/cybersecurity' },
   { name: 'Cloud Migration', desc: 'Distributed high-availability systems', href: '/cloud' },
-  { name: 'AI Automation', desc: 'Adaptive neural decision engines', href: '/ml' },
+  { name: 'AI Automation', desc: 'Automation and data tools', href: '/ml' },
   { name: 'Data Intelligence', desc: 'Real-time analytics dashboards', href: '/data-analytics' },
   { name: 'Marketplace', desc: 'Multi-vendor product marketplace', href: '/marketplace' },
   { name: 'Clawn Academy', desc: 'Courses, certifications, and training', href: '/clawn-academy' },
-  { name: 'ClawnAI Core', desc: 'Unified ecosystem orchestration', href: '/clawn-ai' },
+  { name: 'ClawnAI Core', desc: 'Unified platform management', href: '/clawn-ai' },
   { name: 'Partner Programme', desc: 'Grow together with ClawnCore', href: '/partnerships' },
   { name: 'Agri Store', desc: 'Agricultural products & equipment', href: '/store' },
 ];
@@ -213,7 +213,7 @@ export function Header() {
                   <div className="rounded-xl bg-nvidia-500/10 border border-nvidia-500/20 p-4">
                     <p className="text-[10px] font-mono text-nvidia-500 uppercase tracking-wider mb-2">Featured</p>
                     <p className="text-sm font-bold text-gray-900 dark:text-white mb-1">ClawnAI Core</p>
-                    <p className="text-xs text-gray-500 dark:text-white/50 mb-3">Unified intelligence orchestrating the entire multitech ecosystem.</p>
+                    <p className="text-xs text-gray-500 dark:text-white/50 mb-3">Complete platform management for all ClawnCore services.</p>
                     <Link href="/clawn-ai">
                       <button onClick={() => setMegaOpen(false)} className="text-xs font-bold text-nvidia-500 hover:text-nvidia-400 transition-colors">
                         Explore Platform →

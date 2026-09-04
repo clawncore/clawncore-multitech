@@ -140,7 +140,7 @@ export function SolutionPage({
           <div className="container mx-auto grid gap-12 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-[#2DD4BF]">Operational Advantage</p>
-              <h2 className="mb-6 text-4xl font-semibold tracking-tight md:text-6xl">Built to scale across the ClawnCore ecosystem.</h2>
+              <h2 className="mb-6 text-4xl font-semibold tracking-tight md:text-6xl">Built to scale across every industry.</h2>
               <p className="text-base leading-7 text-slate-300">Every page now follows the same product language: cinematic Tesla-level restraint, with NVIDIA-style technical proof through metrics, systems, and infrastructure detail.</p>
             </div>
 

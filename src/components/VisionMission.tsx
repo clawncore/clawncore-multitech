@@ -11,13 +11,11 @@ export function VisionMission() {
           <div className="space-y-8">
             <div>
               <h2 className="text-4xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-blue-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
-                  Our Vision
-                </span>
+                Our Vision
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                To be the global leader in intelligent technology solutions, empowering businesses to achieve
-                unprecedented growth through innovation, automation, and sustainable practices.
+                To be the global leader in technology solutions, empowering businesses to achieve
+                growth through innovation, automation, and sustainable practices.
               </p>
             </div>
 
@@ -39,12 +37,10 @@ export function VisionMission() {
           <div className="space-y-8">
             <div>
               <h2 className="text-4xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-blue-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
-                  Our Mission
-                </span>
+                Our Mission
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                To deliver cutting-edge technology solutions that solve complex business challenges, drive digital
+                To deliver reliable technology solutions that solve complex business challenges, drive digital
                 transformation, and create meaningful value for our clients and communities.
               </p>
             </div>

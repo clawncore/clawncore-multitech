@@ -11,18 +11,16 @@ export function ClawnAI() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
-              Clawn AI Platform
-            </span>
+            Clawn AI Platform
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Our proprietary AI platform delivers intelligent automation and insights across all industries.
+            Our proprietary AI platform delivers automation and data-driven insights across all industries.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           <div className="space-y-8">
-            <h3 className="text-3xl font-bold">Intelligent Automation at Scale</h3>
+            <h3 className="text-3xl font-bold">Automation at Scale</h3>
 
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
@@ -77,14 +75,14 @@ export function ClawnAI() {
             <div className="text-blue-600 text-2xl mb-4">🏭</div>
             <h4 className="font-semibold mb-2">Industrial Automation</h4>
             <p className="text-sm text-muted-foreground">
-              Optimize manufacturing processes with intelligent automation and predictive maintenance.
+              Optimize manufacturing processes with automation and predictive maintenance.
             </p>
           </div>
           <div className="p-6 bg-card rounded-xl border border-border">
             <div className="text-pink-600 text-2xl mb-4">🏥</div>
             <h4 className="font-semibold mb-2">Healthcare Analytics</h4>
             <p className="text-sm text-muted-foreground">
-              AI-powered diagnostic tools and patient data analysis for improved healthcare outcomes.
+              Diagnostic tools and patient data analysis for improved healthcare outcomes.
             </p>
           </div>
           <div className="p-6 bg-card rounded-xl border border-border">
