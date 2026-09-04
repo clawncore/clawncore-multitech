@@ -12,13 +12,13 @@ import { ChevronLeft, ChevronRight, Star, ShoppingCart, Sprout, Package } from '
 
 const ITEMS_PER_PAGE = 12;
 
-const categoryMeta: Record<string, { title: string; desc: string; gradient: string }> = {
-  drones: { title: 'Agricultural Drones', desc: 'Precision aerial solutions for mapping, spraying, and crop monitoring', gradient: 'from-blue-600 to-cyan-600' },
-  seeds: { title: 'Premium Seeds', desc: 'High-yield, disease-resistant seeds for every crop type', gradient: 'from-green-600 to-nvidia-500' },
-  fertilizers: { title: 'Fertilizers & Nutrients', desc: 'Organic and synthetic fertilizers to maximize your yield', gradient: 'from-amber-600 to-orange-600' },
-  sensors: { title: 'Smart Sensors', desc: 'IoT sensors for soil, weather, and crop health monitoring', gradient: 'from-purple-600 to-indigo-600' },
-  equipment: { title: 'Farm Equipment', desc: 'Professional machinery and tools for every farming task', gradient: 'from-red-600 to-rose-600' },
-  irrigation: { title: 'Irrigation Systems', desc: 'Drip, sprinkler, and pump systems for efficient water management', gradient: 'from-cyan-600 to-blue-600' },
+const categoryMeta: Record<string, { title: string; desc: string }> = {
+  drones: { title: 'Agricultural Drones', desc: 'Mapping, spraying, and crop monitoring aircraft' },
+  seeds: { title: 'Premium Seeds', desc: 'High-yield, disease-resistant seed varieties' },
+  fertilizers: { title: 'Fertilizers & Nutrients', desc: 'Organic and synthetic crop nutrition' },
+  sensors: { title: 'Sensors & Monitoring', desc: 'Soil, weather, and crop health sensors' },
+  equipment: { title: 'Farm Equipment', desc: 'Machinery and tools for every task' },
+  irrigation: { title: 'Irrigation Systems', desc: 'Drip, sprinkler, and pump systems' },
 };
 
 export default function StoreCategory() {
@@ -32,7 +32,7 @@ export default function StoreCategory() {
   const [totalCount, setTotalCount] = useState(0);
 
   const category = location.split('/store/category/')[1]?.split('?')[0] || 'drones';
-  const meta = categoryMeta[category] || { title: category, desc: '', gradient: 'from-gray-600 to-gray-700' };
+  const meta = categoryMeta[category] || { title: category, desc: '' };
 
   const fetchProductsData = useCallback(async () => {
     setLoading(true);
@@ -66,7 +66,7 @@ export default function StoreCategory() {
   return (
     <StoreLayout>
       {/* Category Header */}
-      <section className={`py-12 sm:py-16 bg-gradient-to-r ${meta.gradient}`}>
+      <section className="py-12 sm:py-16 bg-cc-darker">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-2 text-white/60 text-sm mb-3">
             <span className="cursor-pointer hover:text-white" onClick={() => navigate('/store')}>Store</span>

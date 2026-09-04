@@ -52,8 +52,8 @@ function StoreHeader() {
       hasScrolled ? 'bg-white dark:bg-cc-dark shadow-md border-b border-white/10' : 'bg-white dark:bg-cc-dark border-b border-white/10'
     }`}>
       {/* Top bar */}
-      <div className="bg-nvidia-500 text-black text-center text-xs py-1.5 font-medium">
-        <Truck className="inline h-3 w-3 mr-1" /> Free shipping on orders over $50 — Farm smarter with ClawnCore
+      <div className="bg-gray-900 dark:bg-black text-white/60 text-center text-xs py-1.5">
+        Free shipping on orders over $50
       </div>
 
       <div className="container mx-auto flex h-14 md:h-16 items-center justify-between px-4 sm:px-6">
