@@ -4,35 +4,26 @@ import { StoreLayout } from '@/components/store/StoreLayout';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { supabase } from '@/lib/supabase';
+import { fetchOrder, type StoreOrder } from '@/lib/storeApi';
 import { CheckCircle, Package, Truck, MapPin, Calendar } from 'lucide-react';
-
-interface Order {
-  id: string;
-  items: Array<{ name: string; price: number; image: string; quantity: number }>;
-  subtotal: number;
-  shipping_cost: number;
-  tax: number;
-  total: number;
-  shipping: { name: string; address1: string; city: string; state: string; zip: string; country: string };
-  payment_method: string;
-  status: string;
-  created_at: string;
-}
 
 export default function StoreConfirmation() {
   const [location, navigate] = useLocation();
   const orderId = location.split('/store/order/')[1]?.split('?')[0] || '';
-  const [order, setOrder] = useState<Order | null>(null);
+  const [order, setOrder] = useState<StoreOrder | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchOrder = async () => {
-      const { data } = await supabase.from('store_orders').select('*').eq('id', orderId).single();
-      setOrder(data as Order | null);
+    const loadOrder = async () => {
+      try {
+        const data = await fetchOrder(orderId);
+        setOrder(data);
+      } catch {
+        setOrder(null);
+      }
       setLoading(false);
     };
-    if (orderId) fetchOrder();
+    if (orderId) loadOrder();
   }, [orderId]);
 
   if (loading) {
@@ -50,8 +41,8 @@ export default function StoreConfirmation() {
       <div className="container mx-auto px-4 py-12 max-w-3xl">
         {/* Success */}
         <div className="text-center mb-10">
-          <div className="w-20 h-20 bg-emerald-100 dark:bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle className="h-10 w-10 text-emerald-600" />
+          <div className="w-20 h-20 bg-nvidia-100 dark:bg-nvidia-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle className="h-10 w-10 text-nvidia-500" />
           </div>
           <h1 className="text-3xl font-bold mb-2">Order Confirmed!</h1>
           <p className="text-muted-foreground mb-4">Thank you for your purchase. We'll get your order shipped right away.</p>
@@ -98,13 +89,13 @@ export default function StoreConfirmation() {
           <div className="grid sm:grid-cols-2 gap-4">
             <Card className="border border-gray-200 dark:border-white/10">
               <CardContent className="p-5">
-                <p className="font-semibold text-sm mb-2 flex items-center gap-2"><MapPin className="h-4 w-4 text-emerald-600" /> Shipping To</p>
+                <p className="font-semibold text-sm mb-2 flex items-center gap-2"><MapPin className="h-4 w-4 text-nvidia-500" /> Shipping To</p>
                 <p className="text-sm text-muted-foreground">{order.shipping.name}<br />{order.shipping.address1}<br />{order.shipping.city}, {order.shipping.state} {order.shipping.zip}<br />{order.shipping.country}</p>
               </CardContent>
             </Card>
             <Card className="border border-gray-200 dark:border-white/10">
               <CardContent className="p-5">
-                <p className="font-semibold text-sm mb-2 flex items-center gap-2"><Truck className="h-4 w-4 text-emerald-600" /> Delivery</p>
+                <p className="font-semibold text-sm mb-2 flex items-center gap-2"><Truck className="h-4 w-4 text-nvidia-500" /> Delivery</p>
                 <p className="text-sm text-muted-foreground">Estimated delivery by<br /><span className="font-medium text-foreground">{estDelivery}</span></p>
                 <p className="text-xs text-muted-foreground mt-2 capitalize">Payment: {order.payment_method === 'cod' ? 'Cash on Delivery' : order.payment_method}</p>
               </CardContent>
@@ -113,7 +104,7 @@ export default function StoreConfirmation() {
 
           {/* Actions */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
-            <Button className="bg-emerald-600 hover:bg-emerald-700 text-white" onClick={() => navigate('/store')}>
+            <Button className="bg-nvidia-500 hover:bg-nvidia-600 text-black" onClick={() => navigate('/store')}>
               Continue Shopping
             </Button>
             <Button variant="outline" onClick={() => navigate('/store/orders')}>

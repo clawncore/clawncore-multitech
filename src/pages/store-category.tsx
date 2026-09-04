@@ -5,30 +5,16 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { supabase } from '@/lib/supabase';
+import { fetchProducts, type StoreProduct } from '@/lib/storeApi';
 import { useCart } from '@/components/CartProvider';
 import { useToast } from '@/hooks/use-toast';
 import { ChevronLeft, ChevronRight, Star, ShoppingCart, Sprout, Package } from 'lucide-react';
-
-interface StoreProduct {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  compare_price: number | null;
-  images: string[];
-  category: string;
-  stock: number;
-  featured: boolean;
-  rating: number;
-  review_count: number;
-}
 
 const ITEMS_PER_PAGE = 12;
 
 const categoryMeta: Record<string, { title: string; desc: string; gradient: string }> = {
   drones: { title: 'Agricultural Drones', desc: 'Precision aerial solutions for mapping, spraying, and crop monitoring', gradient: 'from-blue-600 to-cyan-600' },
-  seeds: { title: 'Premium Seeds', desc: 'High-yield, disease-resistant seeds for every crop type', gradient: 'from-green-600 to-emerald-600' },
+  seeds: { title: 'Premium Seeds', desc: 'High-yield, disease-resistant seeds for every crop type', gradient: 'from-green-600 to-nvidia-500' },
   fertilizers: { title: 'Fertilizers & Nutrients', desc: 'Organic and synthetic fertilizers to maximize your yield', gradient: 'from-amber-600 to-orange-600' },
   sensors: { title: 'Smart Sensors', desc: 'IoT sensors for soil, weather, and crop health monitoring', gradient: 'from-purple-600 to-indigo-600' },
   equipment: { title: 'Farm Equipment', desc: 'Professional machinery and tools for every farming task', gradient: 'from-red-600 to-rose-600' },
@@ -48,28 +34,18 @@ export default function StoreCategory() {
   const category = location.split('/store/category/')[1]?.split('?')[0] || 'drones';
   const meta = categoryMeta[category] || { title: category, desc: '', gradient: 'from-gray-600 to-gray-700' };
 
-  const fetchProducts = useCallback(async () => {
+  const fetchProductsData = useCallback(async () => {
     setLoading(true);
     try {
-      let query = supabase
-        .from('store_products')
-        .select('*', { count: 'exact' })
-        .eq('status', 'active')
-        .eq('category', category);
-
-      if (sortBy === 'featured') query = query.order('featured', { ascending: false }).order('rating', { ascending: false });
-      else if (sortBy === 'price_low') query = query.order('price', { ascending: true });
-      else if (sortBy === 'price_high') query = query.order('price', { ascending: false });
-      else if (sortBy === 'rating') query = query.order('rating', { ascending: false });
-      else if (sortBy === 'newest') query = query.order('created_at', { ascending: false });
-
       const from = (page - 1) * ITEMS_PER_PAGE;
-      query = query.range(from, from + ITEMS_PER_PAGE - 1);
-
-      const { data, count, error } = await query;
-      if (error) throw error;
-      setProducts((data as StoreProduct[]) || []);
-      setTotalCount(count || 0);
+      const { products: data, total } = await fetchProducts({
+        category,
+        sort: sortBy,
+        limit: ITEMS_PER_PAGE,
+        offset: from,
+      });
+      setProducts(data || []);
+      setTotalCount(total || 0);
     } catch (err) {
       console.error(err);
     } finally {
@@ -77,7 +53,7 @@ export default function StoreCategory() {
     }
   }, [category, sortBy, page]);
 
-  useEffect(() => { fetchProducts(); }, [fetchProducts]);
+  useEffect(() => { fetchProductsData(); }, [fetchProductsData]);
   useEffect(() => { setPage(1); }, [category, sortBy]);
 
   const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE);
@@ -141,7 +117,7 @@ export default function StoreCategory() {
               const hasDiscount = p.compare_price && p.compare_price > p.price;
               const discountPct = hasDiscount ? Math.round(((p.compare_price! - p.price) / p.compare_price!) * 100) : 0;
               return (
-                <Card key={p.id} className="group cursor-pointer hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 dark:border-white/10 hover:border-emerald-500/30"
+                <Card key={p.id} className="group cursor-pointer hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 dark:border-white/10 hover:border-nvidia-500/30"
                   onClick={() => navigate(`/store/product/${p.id}`)}>
                   <div className="relative h-48 bg-gray-100 dark:bg-white/5 overflow-hidden">
                     {p.images?.[0] ? (
@@ -149,7 +125,7 @@ export default function StoreCategory() {
                     ) : (
                       <div className="w-full h-full flex items-center justify-center"><Sprout className="h-12 w-12 text-muted-foreground" /></div>
                     )}
-                    {p.featured && <Badge className="absolute top-2 left-2 bg-emerald-600 text-white text-xs"><Star className="h-3 w-3 mr-1" /> Featured</Badge>}
+                    {p.featured && <Badge className="absolute top-2 left-2 bg-nvidia-500 text-white text-xs"><Star className="h-3 w-3 mr-1" /> Featured</Badge>}
                     {hasDiscount && <Badge className="absolute top-2 right-2 bg-red-500 text-white text-xs">-{discountPct}%</Badge>}
                     {p.stock === 0 && <Badge className="absolute top-2 right-2 bg-gray-500">Out of Stock</Badge>}
                   </div>
@@ -164,10 +140,10 @@ export default function StoreCategory() {
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex items-baseline gap-2">
-                        <span className="text-lg font-bold text-emerald-600">${Number(p.price).toFixed(2)}</span>
+                        <span className="text-lg font-bold text-nvidia-500">${Number(p.price).toFixed(2)}</span>
                         {hasDiscount && <span className="text-sm text-muted-foreground line-through">${Number(p.compare_price).toFixed(2)}</span>}
                       </div>
-                      <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white h-8"
+                      <Button size="sm" className="bg-nvidia-500 hover:bg-nvidia-600 text-black h-8"
                         onClick={(e) => { e.stopPropagation(); handleAddToCart(p); }}
                         disabled={p.stock === 0}>
                         <ShoppingCart className="h-3 w-3" />

@@ -10,7 +10,7 @@ import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { useCart } from '@/components/CartProvider';
 import { useAuth } from '@/hooks/useAuth';
-import { supabase } from '@/lib/supabase';
+import { createOrder } from '@/lib/storeApi';
 import { useToast } from '@/hooks/use-toast';
 import {
   CheckCircle, CreditCard, Truck, ClipboardCheck, ArrowLeft, Lock
@@ -67,23 +67,30 @@ export default function StoreCheckout() {
   const handlePlaceOrder = async () => {
     setIsSubmitting(true);
     try {
-      const { data, error } = await supabase.from('store_orders').insert({
-        user_id: user?.id,
+      const { orderId } = await createOrder({
         items: items.map(i => ({ productId: i.productId, name: i.name, price: i.price, image: i.image, quantity: i.quantity })),
         subtotal: cartTotal,
         shipping_cost: shippingCost,
         tax,
         total,
-        shipping,
+        shipping: {
+          name: shipping.name,
+          email: shipping.email,
+          phone: shipping.phone,
+          address1: shipping.address1,
+          address2: shipping.address2,
+          city: shipping.city,
+          state: shipping.state,
+          zip: shipping.zip,
+          country: shipping.country,
+          notes: shipping.notes,
+        },
         payment_method: paymentMethod,
-        status: 'pending',
-      }).select('id').single();
-
-      if (error) throw error;
+      });
 
       clearCart();
       toast({ title: 'Order placed!', description: 'Your order has been confirmed.' });
-      navigate(`/store/order/${data.id}`);
+      navigate(`/store/order/${orderId}`);
     } catch (err) {
       toast({ title: 'Error', description: err instanceof Error ? err.message : 'Failed to place order.', variant: 'destructive' });
     } finally {
@@ -96,7 +103,7 @@ export default function StoreCheckout() {
       <StoreLayout>
         <div className="container mx-auto px-4 py-20 text-center">
           <h2 className="text-xl font-bold mb-4">Your cart is empty</h2>
-          <Button className="bg-emerald-600 hover:bg-emerald-700 text-white" onClick={() => navigate('/store')}>Browse Store</Button>
+          <Button className="bg-nvidia-500 hover:bg-nvidia-600 text-black" onClick={() => navigate('/store')}>Browse Store</Button>
         </div>
       </StoreLayout>
     );
@@ -116,13 +123,13 @@ export default function StoreCheckout() {
             <div key={s.label} className="flex items-center">
               <div className="flex flex-col items-center">
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
-                  step > i + 1 ? 'bg-emerald-600 text-white' : step === i + 1 ? 'bg-emerald-600 text-white ring-4 ring-emerald-600/20' : 'bg-gray-200 dark:bg-white/10 text-gray-500'
+                  step > i + 1 ? 'bg-nvidia-500 text-white' : step === i + 1 ? 'bg-nvidia-500 text-white ring-4 ring-nvidia-500/20' : 'bg-gray-200 dark:bg-white/10 text-gray-500'
                 }`}>
                   {step > i + 1 ? <CheckCircle className="h-5 w-5" /> : i + 1}
                 </div>
-                <span className={`text-xs mt-1 font-medium ${step === i + 1 ? 'text-emerald-600' : 'text-muted-foreground'}`}>{s.label}</span>
+                <span className={`text-xs mt-1 font-medium ${step === i + 1 ? 'text-nvidia-500' : 'text-muted-foreground'}`}>{s.label}</span>
               </div>
-              {i < steps.length - 1 && <div className={`w-20 h-0.5 mx-4 mt-[-16px] ${step > i + 1 ? 'bg-emerald-600' : 'bg-gray-200 dark:bg-white/10'}`} />}
+              {i < steps.length - 1 && <div className={`w-20 h-0.5 mx-4 mt-[-16px] ${step > i + 1 ? 'bg-nvidia-500' : 'bg-gray-200 dark:bg-white/10'}`} />}
             </div>
           ))}
         </div>
@@ -134,7 +141,7 @@ export default function StoreCheckout() {
             {step === 1 && (
               <Card className="border border-gray-200 dark:border-white/10">
                 <CardContent className="p-6">
-                  <h2 className="text-xl font-bold mb-6 flex items-center gap-2"><Truck className="h-5 w-5 text-emerald-600" /> Shipping Information</h2>
+                  <h2 className="text-xl font-bold mb-6 flex items-center gap-2"><Truck className="h-5 w-5 text-nvidia-500" /> Shipping Information</h2>
                   <div className="space-y-4">
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div><Label>Full Name *</Label><Input value={shipping.name} onChange={(e) => setShipping(p => ({ ...p, name: e.target.value }))} placeholder="John Doe" /></div>
@@ -150,7 +157,7 @@ export default function StoreCheckout() {
                     </div>
                     <div><Label>Delivery Notes</Label><Textarea rows={2} value={shipping.notes} onChange={(e) => setShipping(p => ({ ...p, notes: e.target.value }))} placeholder="Gate code, delivery instructions, etc." /></div>
                   </div>
-                  <Button className="w-full mt-6 bg-emerald-600 hover:bg-emerald-700 text-white" onClick={handleShippingNext}>Continue to Payment</Button>
+                  <Button className="w-full mt-6 bg-nvidia-500 hover:bg-nvidia-600 text-black" onClick={handleShippingNext}>Continue to Payment</Button>
                 </CardContent>
               </Card>
             )}
@@ -159,15 +166,15 @@ export default function StoreCheckout() {
             {step === 2 && (
               <Card className="border border-gray-200 dark:border-white/10">
                 <CardContent className="p-6">
-                  <h2 className="text-xl font-bold mb-6 flex items-center gap-2"><CreditCard className="h-5 w-5 text-emerald-600" /> Payment Method</h2>
+                  <h2 className="text-xl font-bold mb-6 flex items-center gap-2"><CreditCard className="h-5 w-5 text-nvidia-500" /> Payment Method</h2>
                   <div className="space-y-3 mb-6">
                     {[
                       { id: 'cod', label: 'Cash on Delivery', desc: 'Pay when your order arrives' },
                       { id: 'card', label: 'Credit / Debit Card', desc: 'Secure online payment' },
                       { id: 'upi', label: 'UPI Payment', desc: 'Google Pay, PhonePe, Paytm' },
                     ].map((m) => (
-                      <label key={m.id} className={`flex items-center gap-4 p-4 border rounded-xl cursor-pointer transition-all ${paymentMethod === m.id ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-500/10' : 'border-gray-200 dark:border-white/10 hover:border-gray-300'}`}>
-                        <input type="radio" name="payment" value={m.id} checked={paymentMethod === m.id} onChange={() => setPaymentMethod(m.id)} className="accent-emerald-600" />
+                      <label key={m.id} className={`flex items-center gap-4 p-4 border rounded-xl cursor-pointer transition-all ${paymentMethod === m.id ? 'border-nvidia-500 bg-nvidia-50 dark:bg-nvidia-500/10' : 'border-gray-200 dark:border-white/10 hover:border-gray-300'}`}>
+                        <input type="radio" name="payment" value={m.id} checked={paymentMethod === m.id} onChange={() => setPaymentMethod(m.id)} className="accent-nvidia-500" />
                         <div>
                           <p className="font-medium">{m.label}</p>
                           <p className="text-sm text-muted-foreground">{m.desc}</p>
@@ -186,7 +193,7 @@ export default function StoreCheckout() {
                       <p className="text-xs text-muted-foreground flex items-center gap-1"><Lock className="h-3 w-3" /> This is a demo store. No real payment is processed.</p>
                     </div>
                   )}
-                  <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white" onClick={handlePaymentNext}>Review Order</Button>
+                  <Button className="w-full bg-nvidia-500 hover:bg-nvidia-600 text-black" onClick={handlePaymentNext}>Review Order</Button>
                 </CardContent>
               </Card>
             )}
@@ -195,13 +202,13 @@ export default function StoreCheckout() {
             {step === 3 && (
               <Card className="border border-gray-200 dark:border-white/10">
                 <CardContent className="p-6">
-                  <h2 className="text-xl font-bold mb-6 flex items-center gap-2"><ClipboardCheck className="h-5 w-5 text-emerald-600" /> Review Your Order</h2>
+                  <h2 className="text-xl font-bold mb-6 flex items-center gap-2"><ClipboardCheck className="h-5 w-5 text-nvidia-500" /> Review Your Order</h2>
 
                   {/* Shipping Summary */}
                   <div className="p-4 bg-gray-50 dark:bg-white/5 rounded-xl mb-4">
                     <div className="flex items-center justify-between mb-2">
                       <p className="font-semibold text-sm">Shipping Address</p>
-                      <button onClick={() => setStep(1)} className="text-xs text-emerald-600 hover:underline">Edit</button>
+                      <button onClick={() => setStep(1)} className="text-xs text-nvidia-500 hover:underline">Edit</button>
                     </div>
                     <p className="text-sm text-muted-foreground">{shipping.name}<br />{shipping.address1}{shipping.address2 ? `, ${shipping.address2}` : ''}<br />{shipping.city}, {shipping.state} {shipping.zip}<br />{shipping.country}</p>
                   </div>
@@ -210,7 +217,7 @@ export default function StoreCheckout() {
                   <div className="p-4 bg-gray-50 dark:bg-white/5 rounded-xl mb-4">
                     <div className="flex items-center justify-between mb-2">
                       <p className="font-semibold text-sm">Payment Method</p>
-                      <button onClick={() => setStep(2)} className="text-xs text-emerald-600 hover:underline">Edit</button>
+                      <button onClick={() => setStep(2)} className="text-xs text-nvidia-500 hover:underline">Edit</button>
                     </div>
                     <p className="text-sm text-muted-foreground capitalize">{paymentMethod === 'cod' ? 'Cash on Delivery' : paymentMethod === 'upi' ? 'UPI Payment' : 'Credit/Debit Card'}</p>
                   </div>
@@ -234,7 +241,7 @@ export default function StoreCheckout() {
                     </div>
                   </div>
 
-                  <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white" size="lg" onClick={handlePlaceOrder} disabled={isSubmitting}>
+                  <Button className="w-full bg-nvidia-500 hover:bg-nvidia-600 text-black" size="lg" onClick={handlePlaceOrder} disabled={isSubmitting}>
                     <Lock className="h-4 w-4 mr-2" />
                     {isSubmitting ? 'Placing Order...' : `Place Order — $${total.toFixed(2)}`}
                   </Button>

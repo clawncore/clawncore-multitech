@@ -42,5 +42,12 @@ export default defineConfig({
         watch: {
             ignored: ['**/node_modules/**', '**/.git/**', '**/dist/**', '**/backend/**'],
         },
+        proxy: {
+            '/api': {
+                target: 'https://clawncore-backend.onrender.com',
+                changeOrigin: true,
+                secure: true,
+            },
+        },
     },
 });

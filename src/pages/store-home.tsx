@@ -4,7 +4,7 @@ import { StoreLayout } from '@/components/store/StoreLayout';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { supabase } from '@/lib/supabase';
+import { fetchProducts, type StoreProduct } from '@/lib/storeApi';
 import { useCart } from '@/components/CartProvider';
 import { useToast } from '@/hooks/use-toast';
 import {
@@ -12,23 +12,9 @@ import {
   Star, ShoppingCart, ChevronRight, ArrowRight, TrendingUp, Eye
 } from 'lucide-react';
 
-interface StoreProduct {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  compare_price: number | null;
-  images: string[];
-  category: string;
-  stock: number;
-  featured: boolean;
-  rating: number;
-  review_count: number;
-}
-
 const categoryCards = [
   { name: 'Drones', slug: 'drones', icon: Plane, color: 'from-blue-500 to-cyan-500', desc: 'Precision aerial solutions' },
-  { name: 'Seeds', slug: 'seeds', icon: Sprout, color: 'from-green-500 to-emerald-500', desc: 'Premium quality seeds' },
+  { name: 'Seeds', slug: 'seeds', icon: Sprout, color: 'from-green-500 to-nvidia-500', desc: 'Premium quality seeds' },
   { name: 'Fertilizers', slug: 'fertilizers', icon: FlaskConical, color: 'from-amber-500 to-orange-500', desc: 'Boost your yield' },
   { name: 'Sensors', slug: 'sensors', icon: Cpu, color: 'from-purple-500 to-indigo-500', desc: 'Smart farm monitoring' },
   { name: 'Equipment', slug: 'equipment', icon: Wrench, color: 'from-red-500 to-rose-500', desc: 'Farm machinery & tools' },
@@ -47,11 +33,11 @@ export default function StoreHome() {
     const fetchData = async () => {
       setLoading(true);
       const [featuredRes, bestRes] = await Promise.all([
-        supabase.from('store_products').select('*').eq('status', 'active').eq('featured', true).order('rating', { ascending: false }).limit(6),
-        supabase.from('store_products').select('*').eq('status', 'active').order('review_count', { ascending: false }).limit(8),
+        fetchProducts({ featured: true, limit: 6 }),
+        fetchProducts({ limit: 8 }),
       ]);
-      setFeatured((featuredRes.data as StoreProduct[]) || []);
-      setBestSellers((bestRes.data as StoreProduct[]) || []);
+      setFeatured(featuredRes.products || []);
+      setBestSellers(bestRes.products || []);
       setLoading(false);
     };
     fetchData();
@@ -65,10 +51,10 @@ export default function StoreHome() {
   return (
     <StoreLayout>
       {/* Hero */}
-      <section className="relative py-16 sm:py-24 bg-gradient-to-br from-emerald-900 via-green-800 to-teal-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-emerald-400 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-green-400 rounded-full blur-3xl" />
+      <section className="relative py-16 sm:py-24 bg-gradient-to-br from-cc-darker via-cc-dark to-black overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-10 left-10 w-72 h-72 bg-nvidia-500 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-nvidia-400 rounded-full blur-3xl" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl">
@@ -77,7 +63,7 @@ export default function StoreHome() {
             </Badge>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
               Farm Smarter{' '}
-              <span className="bg-gradient-to-r from-emerald-300 to-green-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-nvidia-400 to-nvidia-300 bg-clip-text text-transparent">
                 Grow Better
               </span>
             </h1>
@@ -85,7 +71,7 @@ export default function StoreHome() {
               Professional drones, premium seeds, smart sensors, and everything you need for modern precision agriculture.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-white text-emerald-900 hover:bg-white/90" onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}>
+              <Button size="lg" className="bg-white text-black hover:bg-white/90" onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}>
                 Browse Categories
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -103,7 +89,7 @@ export default function StoreHome() {
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold">Shop by Category</h2>
             <Link href="/store/category/drones">
-              <span className="text-sm text-emerald-600 hover:text-emerald-700 font-medium cursor-pointer flex items-center gap-1">
+              <span className="text-sm text-nvidia-500 hover:text-nvidia-600 font-medium cursor-pointer flex items-center gap-1">
                 View All <ChevronRight className="h-4 w-4" />
               </span>
             </Link>
@@ -111,7 +97,7 @@ export default function StoreHome() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {categoryCards.map((cat) => (
               <Link key={cat.slug} href={`/store/category/${cat.slug}`}>
-                <div className="group cursor-pointer rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 overflow-hidden hover:shadow-lg hover:border-emerald-500/30 transition-all duration-300">
+                <div className="group cursor-pointer rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 overflow-hidden hover:shadow-lg hover:border-nvidia-500/30 transition-all duration-300">
                   <div className={`h-20 bg-gradient-to-br ${cat.color} flex items-center justify-center`}>
                     <cat.icon className="h-10 w-10 text-white drop-shadow-lg" />
                   </div>
@@ -167,12 +153,12 @@ export default function StoreHome() {
         )}
 
         {/* CTA */}
-        <section className="text-center p-10 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-500/5 dark:to-green-500/5 rounded-2xl border border-gray-200 dark:border-white/10">
+        <section className="text-center p-10 bg-gradient-to-br from-nvidia-50 to-green-50 dark:from-nvidia-500/5 dark:to-green-500/5 rounded-2xl border border-gray-200 dark:border-white/10">
           <h3 className="text-2xl font-bold mb-2">Need Help Choosing?</h3>
           <p className="text-muted-foreground max-w-lg mx-auto mb-6">
             Our agricultural experts are ready to help you find the right products for your farm.
           </p>
-          <Button className="bg-emerald-600 hover:bg-emerald-700 text-white" onClick={() => navigate('/get-started')}>
+          <Button className="bg-nvidia-500 hover:bg-nvidia-600 text-black" onClick={() => navigate('/get-started')}>
             Talk to an Expert
           </Button>
         </section>
@@ -191,7 +177,7 @@ function ProductCard({ product, onAddToCart, onView, compact }: {
   const discountPct = hasDiscount ? Math.round(((product.compare_price! - product.price) / product.compare_price!) * 100) : 0;
 
   return (
-    <Card className="group cursor-pointer hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 dark:border-white/10 hover:border-emerald-500/30"
+    <Card className="group cursor-pointer hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 dark:border-white/10 hover:border-nvidia-500/30"
       onClick={onView}>
       <div className={`relative ${compact ? 'h-40' : 'h-48'} bg-gray-100 dark:bg-white/5 overflow-hidden`}>
         {product.images?.[0] ? (
@@ -202,7 +188,7 @@ function ProductCard({ product, onAddToCart, onView, compact }: {
           </div>
         )}
         {product.featured && (
-          <Badge className="absolute top-2 left-2 bg-emerald-600 text-white text-xs">
+          <Badge className="absolute top-2 left-2 bg-nvidia-500 text-white text-xs">
             <Star className="h-3 w-3 mr-1" /> Featured
           </Badge>
         )}
@@ -228,12 +214,12 @@ function ProductCard({ product, onAddToCart, onView, compact }: {
         </div>
         <div className="flex items-center justify-between">
           <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold text-emerald-600">${Number(product.price).toFixed(2)}</span>
+            <span className="text-lg font-bold text-nvidia-500">${Number(product.price).toFixed(2)}</span>
             {hasDiscount && (
               <span className="text-sm text-muted-foreground line-through">${Number(product.compare_price).toFixed(2)}</span>
             )}
           </div>
-          <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white h-8"
+          <Button size="sm" className="bg-nvidia-500 hover:bg-nvidia-600 text-black h-8"
             onClick={(e) => { e.stopPropagation(); onAddToCart(product); }}
             disabled={product.stock === 0}>
             <ShoppingCart className="h-3 w-3" />

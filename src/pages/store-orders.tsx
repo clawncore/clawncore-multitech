@@ -5,22 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { supabase } from '@/lib/supabase';
+import { fetchOrders, type StoreOrder } from '@/lib/storeApi';
 import { useAuth } from '@/hooks/useAuth';
 import { Package, ChevronDown, ChevronUp, Clock, CheckCircle, Truck, MapPin, ShoppingBag } from 'lucide-react';
-
-interface Order {
-  id: string;
-  items: Array<{ name: string; price: number; image: string; quantity: number }>;
-  subtotal: number;
-  shipping_cost: number;
-  tax: number;
-  total: number;
-  shipping: { name: string; address1: string; city: string; state: string; zip: string };
-  payment_method: string;
-  status: string;
-  created_at: string;
-}
 
 const statusConfig: Record<string, { color: string; icon: React.FC<{ className?: string }> }> = {
   pending: { color: 'bg-yellow-500/10 text-yellow-600 border-yellow-500/20', icon: Clock },
@@ -35,18 +22,18 @@ const statusSteps = ['pending', 'confirmed', 'shipped', 'delivered'];
 export default function StoreOrders() {
   const [, navigate] = useLocation();
   const { isAuthenticated, openLoginModal } = useAuth();
-  const [orders, setOrders] = useState<Order[]>([]);
+  const [orders, setOrders] = useState<StoreOrder[]>([]);
   const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isAuthenticated) { setLoading(false); return; }
-    const fetchOrders = async () => {
-      const { data } = await supabase.from('store_orders').select('*').order('created_at', { ascending: false });
-      setOrders((data as Order[]) || []);
+    const loadOrders = async () => {
+      const data = await fetchOrders();
+      setOrders(data || []);
       setLoading(false);
     };
-    fetchOrders();
+    loadOrders();
   }, [isAuthenticated]);
 
   if (!isAuthenticated) {
@@ -56,7 +43,7 @@ export default function StoreOrders() {
           <Package className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
           <h2 className="text-xl font-bold mb-2">Sign in to view your orders</h2>
           <p className="text-muted-foreground mb-6">Track your purchases and delivery status.</p>
-          <Button className="bg-emerald-600 hover:bg-emerald-700 text-white" onClick={openLoginModal}>Sign In</Button>
+          <Button className="bg-nvidia-500 hover:bg-nvidia-600 text-black" onClick={openLoginModal}>Sign In</Button>
         </div>
       </StoreLayout>
     );
@@ -78,7 +65,7 @@ export default function StoreOrders() {
             <ShoppingBag className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
             <h2 className="text-xl font-semibold mb-2">No orders yet</h2>
             <p className="text-muted-foreground mb-6">Start shopping to see your orders here.</p>
-            <Button className="bg-emerald-600 hover:bg-emerald-700 text-white" onClick={() => navigate('/store')}>Browse Store</Button>
+            <Button className="bg-nvidia-500 hover:bg-nvidia-600 text-black" onClick={() => navigate('/store')}>Browse Store</Button>
           </div>
         ) : (
           <div className="space-y-4">
@@ -121,7 +108,7 @@ export default function StoreOrders() {
                             const StepIcon = statusConfig[s]?.icon || Clock;
                             return (
                               <div key={s} className="flex flex-col items-center flex-1">
-                                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${i <= currentStep ? 'bg-emerald-600 text-white' : 'bg-gray-200 dark:bg-white/10 text-gray-400'}`}>
+                                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${i <= currentStep ? 'bg-nvidia-500 text-white' : 'bg-gray-200 dark:bg-white/10 text-gray-400'}`}>
                                   <StepIcon className="h-4 w-4" />
                                 </div>
                                 <span className="text-[10px] text-muted-foreground mt-1 capitalize">{s}</span>

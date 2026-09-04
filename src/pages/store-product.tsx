@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { supabase } from '@/lib/supabase';
+import { fetchProduct, fetchProducts, type StoreProduct } from '@/lib/storeApi';
 import { useCart } from '@/components/CartProvider';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
@@ -13,22 +13,6 @@ import {
   ChevronRight, Star, ShoppingCart, Minus, Plus, Truck,
   Shield, RotateCcw, CheckCircle, Sprout, Package
 } from 'lucide-react';
-
-interface StoreProduct {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  compare_price: number | null;
-  images: string[];
-  category: string;
-  subcategory: string;
-  stock: number;
-  featured: boolean;
-  rating: number;
-  review_count: number;
-  tags: string[];
-}
 
 export default function StoreProductDetail() {
   const [location, navigate] = useLocation();
@@ -45,17 +29,19 @@ export default function StoreProductDetail() {
   const [added, setAdded] = useState(false);
 
   useEffect(() => {
-    const fetchProduct = async () => {
+    const loadProduct = async () => {
       setLoading(true);
-      const { data } = await supabase.from('store_products').select('*').eq('id', productId).single();
-      if (data) {
-        setProduct(data as StoreProduct);
-        const { data: rel } = await supabase.from('store_products').select('*').eq('status', 'active').eq('category', (data as StoreProduct).category).neq('id', productId).limit(4);
-        setRelated((rel as StoreProduct[]) || []);
+      try {
+        const data = await fetchProduct(productId);
+        setProduct(data);
+        const { products: rel } = await fetchProducts({ category: data.category, limit: 4 });
+        setRelated(rel.filter((p: StoreProduct) => p.id !== productId));
+      } catch {
+        setProduct(null);
       }
       setLoading(false);
     };
-    if (productId) fetchProduct();
+    if (productId) loadProduct();
   }, [productId]);
 
   const handleAddToCart = () => {
@@ -85,9 +71,9 @@ export default function StoreProductDetail() {
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-          <span className="cursor-pointer hover:text-emerald-600" onClick={() => navigate('/store')}>Store</span>
+          <span className="cursor-pointer hover:text-nvidia-500" onClick={() => navigate('/store')}>Store</span>
           <ChevronRight className="h-3 w-3" />
-          <span className="cursor-pointer hover:text-emerald-600" onClick={() => navigate(`/store/category/${product.category}`)}>{product.category}</span>
+          <span className="cursor-pointer hover:text-nvidia-500" onClick={() => navigate(`/store/category/${product.category}`)}>{product.category}</span>
           <ChevronRight className="h-3 w-3" />
           <span className="text-foreground">{product.name}</span>
         </div>
@@ -108,7 +94,7 @@ export default function StoreProductDetail() {
               <div className="flex gap-2">
                 {product.images.map((img, i) => (
                   <button key={i} onClick={() => setSelectedImage(i)}
-                    className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-colors ${selectedImage === i ? 'border-emerald-500' : 'border-transparent'}`}>
+                    className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-colors ${selectedImage === i ? 'border-nvidia-500' : 'border-transparent'}`}>
                     <img src={img} alt="" className="w-full h-full object-cover" />
                   </button>
                 ))}
@@ -131,7 +117,7 @@ export default function StoreProductDetail() {
             </div>
 
             <div className="flex items-baseline gap-3 mb-6">
-              <span className="text-3xl font-bold text-emerald-600">${Number(product.price).toFixed(2)}</span>
+              <span className="text-3xl font-bold text-nvidia-500">${Number(product.price).toFixed(2)}</span>
               {hasDiscount && (
                 <>
                   <span className="text-lg text-muted-foreground line-through">${Number(product.compare_price).toFixed(2)}</span>
@@ -161,7 +147,7 @@ export default function StoreProductDetail() {
                 <span className="px-4 font-medium">{quantity}</span>
                 <button onClick={() => setQuantity(q => Math.min(product.stock, q + 1))} className="p-3 hover:bg-gray-100 dark:hover:bg-white/5"><Plus className="h-4 w-4" /></button>
               </div>
-              <Button size="lg" className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white"
+              <Button size="lg" className="flex-1 bg-nvidia-500 hover:bg-nvidia-600 text-black"
                 onClick={handleAddToCart} disabled={product.stock === 0 || added}>
                 <ShoppingCart className="h-4 w-4 mr-2" />
                 {added ? 'Added!' : product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}
@@ -176,7 +162,7 @@ export default function StoreProductDetail() {
                 { icon: RotateCcw, text: '30-Day Returns' },
               ].map((t) => (
                 <div key={t.text} className="flex flex-col items-center gap-1 p-3 bg-gray-50 dark:bg-white/5 rounded-lg text-center">
-                  <t.icon className="h-4 w-4 text-emerald-600" />
+                  <t.icon className="h-4 w-4 text-nvidia-500" />
                   <span className="text-xs text-muted-foreground">{t.text}</span>
                 </div>
               ))}
@@ -211,7 +197,7 @@ export default function StoreProductDetail() {
             <h2 className="text-2xl font-bold mb-6">You May Also Like</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {related.map((p) => (
-                <Card key={p.id} className="group cursor-pointer hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 dark:border-white/10 hover:border-emerald-500/30"
+                <Card key={p.id} className="group cursor-pointer hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 dark:border-white/10 hover:border-nvidia-500/30"
                   onClick={() => navigate(`/store/product/${p.id}`)}>
                   <div className="relative h-40 bg-gray-100 dark:bg-white/5 overflow-hidden">
                     {p.images?.[0] ? (
@@ -227,7 +213,7 @@ export default function StoreProductDetail() {
                         <Star key={i} className={`h-3 w-3 ${i < Math.round(p.rating) ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300 dark:text-gray-600'}`} />
                       ))}
                     </div>
-                    <span className="text-lg font-bold text-emerald-600">${Number(p.price).toFixed(2)}</span>
+                    <span className="text-lg font-bold text-nvidia-500">${Number(p.price).toFixed(2)}</span>
                   </CardContent>
                 </Card>
               ))}

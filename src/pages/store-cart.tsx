@@ -36,7 +36,7 @@ export default function StoreCart() {
             <ShoppingBag className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
             <h2 className="text-xl font-semibold mb-2">Your cart is empty</h2>
             <p className="text-muted-foreground mb-6">Browse our agricultural products and find what you need.</p>
-            <Button className="bg-emerald-600 hover:bg-emerald-700 text-white" onClick={() => navigate('/store')}>
+            <Button className="bg-nvidia-500 hover:bg-nvidia-600 text-black" onClick={() => navigate('/store')}>
               Browse Store
             </Button>
           </div>
@@ -57,7 +57,7 @@ export default function StoreCart() {
                     <div className="flex-1 min-w-0">
                       <h3 className="font-semibold truncate">{item.name}</h3>
                       <p className="text-sm text-muted-foreground">{item.vendorName}</p>
-                      <p className="text-emerald-600 font-bold mt-1">${item.price.toFixed(2)}</p>
+                      <p className="text-nvidia-500 font-bold mt-1">${item.price.toFixed(2)}</p>
                     </div>
                     <div className="flex items-center border rounded-lg">
                       <button onClick={() => updateQuantity(item.productId, item.quantity - 1)} className="p-2 hover:bg-gray-100 dark:hover:bg-white/5"><Minus className="h-4 w-4" /></button>
@@ -88,13 +88,13 @@ export default function StoreCart() {
                     <div className="flex justify-between"><span>Tax (8%)</span><span>${tax.toFixed(2)}</span></div>
                   </div>
                   {shipping > 0 && (
-                    <p className="text-xs text-emerald-600 bg-emerald-50 dark:bg-emerald-500/10 p-2 rounded-lg">
+                    <p className="text-xs text-nvidia-500 bg-nvidia-50 dark:bg-nvidia-500/10 p-2 rounded-lg">
                       Add ${(50 - cartTotal).toFixed(2)} more for free shipping!
                     </p>
                   )}
                   <Separator />
                   <div className="flex justify-between font-bold text-lg"><span>Total</span><span>${total.toFixed(2)}</span></div>
-                  <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white" size="lg" onClick={handleCheckout}>
+                  <Button className="w-full bg-nvidia-500 hover:bg-nvidia-600 text-black" size="lg" onClick={handleCheckout}>
                     Proceed to Checkout
                   </Button>
                 </CardContent>
@@ -107,7 +107,7 @@ export default function StoreCart() {
                   { icon: RotateCcw, text: '30-Day Returns' },
                 ].map((t) => (
                   <div key={t.text} className="flex flex-col items-center gap-1 p-2 bg-gray-50 dark:bg-white/5 rounded-lg text-center">
-                    <t.icon className="h-3.5 w-3.5 text-emerald-600" />
+                    <t.icon className="h-3.5 w-3.5 text-nvidia-500" />
                     <span className="text-[10px] text-muted-foreground">{t.text}</span>
                   </div>
                 ))}
