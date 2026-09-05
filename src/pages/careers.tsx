@@ -12,7 +12,7 @@ import { supabase } from '@/lib/supabase';
 import {
   Briefcase, MapPin, Clock, DollarSign, ChevronRight, Search,
   Users, Globe, Zap, Heart, GraduationCap, Coffee, ArrowRight,
-  Code, Brain, Shield, Cloud, BarChart3, Megaphone, CheckCircle
+  Code, Activity, Shield, Cloud, BarChart3, Megaphone, CheckCircle
 } from 'lucide-react';
 
 interface Job {
@@ -29,7 +29,7 @@ interface Job {
 const departments = [
   { name: 'All', icon: Briefcase },
   { name: 'Engineering', icon: Code },
-  { name: 'AI & Research', icon: Brain },
+  { name: 'AI & Research', icon: Activity },
   { name: 'Security', icon: Shield },
   { name: 'Cloud', icon: Cloud },
   { name: 'Data', icon: BarChart3 },
@@ -183,10 +183,10 @@ export default function CareersPage() {
       <Header />
 
       {/* Hero */}
-      <section className="relative py-16 sm:py-24 bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900 overflow-hidden">
+      <section className="relative py-16 sm:py-24 bg-gradient-to-br from-cc-darker via-gray-900 to-gray-800 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500 rounded-full blur-3xl" />
+          <div className="absolute top-20 left-20 w-72 h-72 bg-nvidia-500 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-nvidia-500 rounded-full blur-3xl" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">

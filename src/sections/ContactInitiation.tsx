@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useLocation } from 'wouter';
 import { ContactScene } from '../scenes/ContactScene';
 import { Button } from '../components/ui/button';
-import { ArrowRight, Sparkles, Building2, User, Mail, MessageSquare } from 'lucide-react';
+import { ArrowRight, Zap, Building2, User, Mail, MessageSquare } from 'lucide-react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -64,7 +64,7 @@ export function ContactInitiation() {
                 onClick={() => setLocation('/intelligence-core')}
                 className="h-12 px-6 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 border border-sky-500/20 transition-all group"
               >
-                <Sparkles className="w-4 h-4 mr-2 opacity-70 group-hover:opacity-100" />
+                <Zap className="w-4 h-4 mr-2 opacity-70 group-hover:opacity-100" />
                 Explore ClawnAI
               </Button>
               <Button className="h-12 px-6 rounded-xl bg-gray-100 hover:bg-gray-200 dark:bg-white/5 dark:hover:bg-white/10 text-gray-900 dark:text-white border border-gray-200 dark:border-white/10 transition-all">
@@ -83,9 +83,6 @@ export function ContactInitiation() {
             transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="relative rounded-3xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-black/40 backdrop-blur-3xl overflow-hidden p-8 shadow-2xl"
           >
-            {/* Ambient glow behind form */}
-            <div className={`absolute top-0 right-0 w-64 h-64 bg-sky-500/20 rounded-full blur-[80px] transition-opacity duration-1000 ${isFocused ? 'opacity-100' : 'opacity-40'}`} />
-
             {/* Tabs */}
             <div className="flex gap-1 mb-8 border-b border-gray-200 dark:border-white/10 pb-4 relative z-10">
               <button

@@ -2,6 +2,8 @@ import { useLocation } from 'wouter';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PersistentCTA } from '@/components/PersistentCTA';
+import { SEO, ServiceSchema } from '@/components/SEO';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
 import { AlertTriangle, Building2, Eye, FileLock2, LockKeyhole, Network, ShieldCheck } from 'lucide-react';
@@ -68,10 +70,38 @@ export default function Cybersecurity() {
 
   return (
     <div className="min-h-screen bg-[#f5f7fb] text-[#101827]">
+      <SEO
+        title="Cybersecurity"
+        description="Quantum-resistant threat intelligence with real-time behavioral analysis. Cybersecurity solutions for Zimbabwean businesses and institutions."
+        keywords={[
+          'cybersecurity Zimbabwe',
+          'business security Africa',
+          'data protection Zimbabwe',
+          'IT security services',
+          'cyber security company Africa',
+        ]}
+        ogImage="/og-cybersecurity.png"
+      />
+      <ServiceSchema
+        name="Cybersecurity"
+        description="Quantum-resistant threat intelligence with real-time behavioral analysis for Zimbabwean businesses and institutions."
+        url="https://clawncore.com/platforms/cybersecurity"
+        serviceType="Cybersecurity Solutions"
+      />
+
       <Header />
 
       <main>
         <section className="relative overflow-hidden bg-[#05070b] px-4 sm:px-6 pb-16 sm:pb-20 pt-24 sm:pt-28 text-white md:pb-28 md:pt-36">
+          <div className="container relative z-10 mx-auto mb-8">
+            <Breadcrumbs
+              items={[
+                { name: 'Platforms', url: '/platforms' },
+                { name: 'Cybersecurity', url: '/platforms/cybersecurity' },
+              ]}
+              className="text-white/70"
+            />
+          </div>
           <div className="absolute inset-0 opacity-20">
             <img src="/cyber security heropng" alt="Cybersecurity network" loading="lazy" className="h-full w-full object-cover" />
           </div>

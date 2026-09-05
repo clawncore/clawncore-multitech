@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { PrototypeId } from "../../services/prototypes";
-import { Play, Square, BrainCircuit, Cpu, ShieldAlert } from "lucide-react";
+import { Play, Square, Cpu, ShieldAlert } from "lucide-react";
 
 interface Props {
   activePrototype: PrototypeId;
@@ -28,7 +28,7 @@ export function PrototypeControls({
         className={`justify-start ${activePrototype === 'neural' ? 'bg-indigo-600 hover:bg-indigo-700' : 'text-slate-600 border-slate-200 hover:bg-slate-50'}`}
         onClick={() => handleSelect('neural')}
       >
-        <BrainCircuit className="w-4 h-4 mr-3" />
+        <Cpu className="w-4 h-4 mr-3" />
         Neural Mesh
       </Button>
 

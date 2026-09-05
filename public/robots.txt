@@ -1,0 +1,30 @@
+# Robots.txt for ClawnCore Multitech
+# https://clawncore.com
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Block admin and private pages
+Disallow: /admin/
+Disallow: /api/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /profile/
+Disallow: /vendor/dashboard/
+Disallow: /store/cart/
+Disallow: /store/checkout/
+Disallow: /store/orders/
+
+# Block search results (if implemented)
+Disallow: /search?
+
+# Block internal tools
+Disallow: /tools/
+Disallow: /internal/
+
+# Sitemap location
+Sitemap: https://clawncore.com/sitemap.xml
+
+# Crawl-delay (optional, for polite crawling)
+# Crawl-delay: 1

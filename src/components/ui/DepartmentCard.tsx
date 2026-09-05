@@ -1,4 +1,4 @@
-import { BrainCircuit, Cpu, ShieldAlert, Network, BarChart3, ChevronRight } from 'lucide-react';
+import { Activity, Cpu, ShieldAlert, Network, BarChart3, ChevronRight } from 'lucide-react';
 import { DepartmentId, DEPARTMENTS, CAREER_ROLES } from '@/services/careersData';
 
 interface Props {
@@ -6,8 +6,8 @@ interface Props {
   onSelect: (dept: DepartmentId) => void;
 }
 
-const DEPT_ICON_MAP: Record<DepartmentId, typeof BrainCircuit> = {
-  ai: BrainCircuit,
+const DEPT_ICON_MAP: Record<DepartmentId, typeof Activity> = {
+  ai: Activity,
   drone: Cpu,
   cyber: ShieldAlert,
   cloud: Network,

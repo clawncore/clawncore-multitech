@@ -9,7 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Star, ShoppingCart, ChevronRight } from 'lucide-react';
 
 const categories = [
-  { name: 'Drones', slug: 'drones', image: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=400&q=80' },
+  { name: 'Drones', slug: 'drones', image: 'https://images.unsplash.com/photo-1713952160156-bb59cac789a9?auto=format&fit=crop&w=400&q=80' },
   { name: 'Seeds', slug: 'seeds', image: 'https://images.unsplash.com/photo-1437252611977-07f74518abd7?auto=format&fit=crop&w=400&q=80' },
   { name: 'Fertilizers', slug: 'fertilizers', image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=400&q=80' },
   { name: 'Sensors', slug: 'sensors', image: 'https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=400&q=80' },
@@ -49,7 +49,7 @@ export default function StoreHome() {
       {/* Hero — with background image */}
       <section className="relative py-16 sm:py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1600&q=80" alt="" className="w-full h-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=1600&q=80" alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-cc-darker via-cc-darker/80 to-cc-darker/40" />
         </div>
         <div className="container mx-auto px-4 relative z-10">

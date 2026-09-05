@@ -7,7 +7,7 @@ import { AccountDropdown } from '@/components/AccountDropdown';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Search, ShoppingCart, X, Truck, ArrowRight } from 'lucide-react';
+import { Search, ShoppingCart, X, Truck, ArrowRight, ArrowLeft } from 'lucide-react';
 import { Linkedin, Twitter, Github } from 'lucide-react';
 import { FaBars } from 'react-icons/fa';
 import { SectionDivider } from '@/components/SectionDivider';
@@ -57,22 +57,30 @@ function StoreHeader() {
       </div>
 
       <div className="container mx-auto flex h-14 md:h-16 items-center justify-between px-4 sm:px-6">
-        {/* Logo */}
-        <Link href="/store">
-          <div className="flex items-center cursor-pointer gap-2.5">
-            <div className="w-8 h-8 rounded-md bg-nvidia-500 flex items-center justify-center">
-              <span className="text-black font-black text-sm">C</span>
+        {/* Logo + Back to main site */}
+        <div className="flex items-center gap-4">
+          <Link href="/">
+            <span className="hidden sm:flex items-center gap-1 text-xs text-gray-500 dark:text-white/40 hover:text-nvidia-500 dark:hover:text-nvidia-500 transition-colors cursor-pointer font-medium">
+              <ArrowLeft className="h-3 w-3" />
+              Main Site
+            </span>
+          </Link>
+          <Link href="/store">
+            <div className="flex items-center cursor-pointer gap-2.5">
+              <div className="w-8 h-8 rounded-md bg-nvidia-500 flex items-center justify-center">
+                <span className="text-black font-black text-sm">C</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-sm font-bold tracking-tight text-gray-900 dark:text-white leading-none">
+                  ClawnCore
+                </span>
+                <span className="text-[10px] text-nvidia-500 font-semibold leading-none mt-0.5">
+                  AGRI STORE
+                </span>
+              </div>
             </div>
-            <div className="flex flex-col">
-              <span className="text-sm font-bold tracking-tight text-gray-900 dark:text-white leading-none">
-                ClawnCore
-              </span>
-              <span className="text-[10px] text-nvidia-500 font-semibold leading-none mt-0.5">
-                AGRI STORE
-              </span>
-            </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center space-x-1">
@@ -136,6 +144,12 @@ function StoreHeader() {
                 </button>
               </div>
               <nav className="flex flex-col p-5 gap-1">
+                <Link href="/">
+                  <span onClick={() => setIsOpen(false)} className="flex items-center gap-2 py-2.5 px-3 text-sm font-medium text-nvidia-500 hover:bg-nvidia-500/10 rounded-lg transition-colors cursor-pointer mb-1">
+                    <ArrowLeft className="h-4 w-4" />
+                    Back to Main Site
+                  </span>
+                </Link>
                 <Link href="/store">
                   <span onClick={() => setIsOpen(false)} className="block py-2.5 px-3 text-sm font-medium text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg transition-colors cursor-pointer">
                     Home
@@ -285,8 +299,8 @@ function StoreFooter() {
             <h4 className="text-sm font-bold uppercase tracking-wider text-white/60 mb-5">Company</h4>
             <ul className="space-y-3">
               {[
-                { name: 'About Us', href: '/#about' },
                 { name: 'Main Site', href: '/' },
+                { name: 'About Us', href: '/about' },
                 { name: 'Marketplace', href: '/marketplace' },
                 { name: 'Partnerships', href: '/partnerships' },
               ].map((l) => (

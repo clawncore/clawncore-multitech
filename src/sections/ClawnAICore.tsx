@@ -85,7 +85,7 @@ export function ClawnAICore() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <span className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 text-[7px] sm:text-[9px] font-mono uppercase tracking-widest text-white/90">Security</span>
               </div>
-              <div className="group relative w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl overflow-hidden border border-purple-500/30 shadow-lg">
+              <div className="group relative w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl overflow-hidden border border-indigo-500/30 shadow-lg">
                 <img src="/hero-bg.png" alt="Cloud Infrastructure" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <span className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 text-[7px] sm:text-[9px] font-mono uppercase tracking-widest text-white/90">Cloud</span>

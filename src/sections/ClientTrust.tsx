@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TrustScene } from '../scenes/TrustScene';
-import { Shield, Brain, Leaf, Cloud, BarChart3, Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { Shield, Activity, Leaf, Cloud, BarChart3, Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
 // ── Data ────────────────────────────────────────────────────────────────────
 
@@ -31,7 +31,7 @@ const TESTIMONIALS = [
   {
     id: 'ai',
     category: 'AI Infrastructure',
-    icon: Brain,
+    icon: Activity,
     color: '#60a5fa',
     company: 'Nexus Analytics Group',
     role: 'Head of Data Science',

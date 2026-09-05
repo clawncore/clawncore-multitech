@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X, CheckCircle2, UploadCloud, MapPin, Clock, Banknote,
-  ArrowLeft, ArrowRight, BrainCircuit, Cpu, ShieldAlert,
+  ArrowLeft, ArrowRight, Activity, Cpu, ShieldAlert,
   Network, BarChart3, Briefcase, GraduationCap, Heart,
   User, Mail, Phone, Globe, FileText, Send, Check
 } from "lucide-react";
@@ -16,8 +16,8 @@ interface Props {
   onClose: () => void;
 }
 
-const DEPT_ICONS: Record<DepartmentId, typeof BrainCircuit> = {
-  ai: BrainCircuit,
+const DEPT_ICONS: Record<DepartmentId, typeof Activity> = {
+  ai: Activity,
   drone: Cpu,
   cyber: ShieldAlert,
   cloud: Network,

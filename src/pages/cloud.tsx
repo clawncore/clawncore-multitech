@@ -2,6 +2,8 @@ import { useLocation } from 'wouter';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PersistentCTA } from '@/components/PersistentCTA';
+import { SEO, ServiceSchema } from '@/components/SEO';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { Cloud, Database, Lock, Server, Wifi, Zap } from 'lucide-react';
 
@@ -60,9 +62,37 @@ export default function CloudComputing() {
 
   return (
     <div className="min-h-screen bg-[#f6f8fb] text-[#111827]">
+      <SEO
+        title="Cloud Infrastructure"
+        description="Globally distributed, high-availability cloud fabric for mission-critical autonomous workloads. Cloud solutions for Zimbabwean organizations."
+        keywords={[
+          'cloud hosting Zimbabwe',
+          'cloud services Africa',
+          'business cloud infrastructure',
+          'cloud migration services',
+          'managed cloud services Africa',
+        ]}
+        ogImage="/og-cloud.png"
+      />
+      <ServiceSchema
+        name="Cloud Infrastructure"
+        description="Globally distributed, high-availability cloud fabric for mission-critical autonomous workloads."
+        url="https://clawncore.com/platforms/cloud-infrastructure"
+        serviceType="Cloud Infrastructure"
+      />
+
       <Header />
       <main>
         <section className="relative overflow-hidden bg-[#060b14] px-4 sm:px-6 pb-16 sm:pb-20 pt-24 sm:pt-28 text-white md:pb-28 md:pt-36">
+          <div className="container relative z-10 mx-auto mb-8">
+            <Breadcrumbs
+              items={[
+                { name: 'Platforms', url: '/platforms' },
+                { name: 'Cloud Infrastructure', url: '/platforms/cloud-infrastructure' },
+              ]}
+              className="text-white/70"
+            />
+          </div>
           <div className="absolute inset-0 opacity-22">
             <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2200&q=85" alt="Cloud infrastructure network" loading="lazy" className="h-full w-full object-cover" />
           </div>

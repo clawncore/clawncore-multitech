@@ -1,6 +1,6 @@
 import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Bot, Languages, Eye } from 'lucide-react';
+import { ArrowRight, Activity, Languages, Eye } from 'lucide-react';
 import { NeuralCore } from './3d/NeuralCore';
 
 export function ClawnAI() {
@@ -24,8 +24,8 @@ export function ClawnAI() {
 
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                  <Bot className="text-slate-900" size={16} />
+                <div className="w-8 h-8 bg-nvidia-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                  <Activity className="text-slate-900" size={16} />
                 </div>
                 <div>
                   <h4 className="font-semibold mb-2">Machine Learning Models</h4>

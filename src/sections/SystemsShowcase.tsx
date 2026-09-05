@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, Brain, Cloud, BarChart3, Leaf, ArrowRight } from 'lucide-react';
+import { Shield, Activity, Cloud, BarChart3, Leaf, ArrowRight } from 'lucide-react';
 import { CategoryPill } from '@/components/CategoryPill';
 import { Button } from '@/components/ui/button';
 import { useLocation } from 'wouter';
@@ -23,7 +23,7 @@ const SYSTEMS = [
   },
   {
     id: 'ai',
-    icon: Brain,
+    icon: Activity,
     category: 'SYS.INTELLIGENCE',
     title: 'Distributed Neural Intelligence',
     description: 'Adaptive neural systems that learn from every data point — continuously refining decisions and predictions.',

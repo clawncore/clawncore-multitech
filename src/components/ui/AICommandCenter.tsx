@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './button';
-import { Send, Cpu, Network, ShieldAlert, Sparkles, Activity } from 'lucide-react';
+import { Send, Cpu, Network, ShieldAlert, Activity } from 'lucide-react';
 import { useAIConversation, Message } from '../../hooks/useAIConversation';
 
 interface AICommandCenterProps {
@@ -42,8 +42,8 @@ export function AICommandCenter({ hook }: AICommandCenterProps) {
             animate={{ opacity: 1, x: 0 }} 
             className="flex items-center gap-3 mb-2"
           >
-            <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-blue-400" />
+            <div className="w-10 h-10 rounded-xl bg-nvidia-500/10 border border-nvidia-500/20 flex items-center justify-center">
+              <Cpu className="w-5 h-5 text-nvidia-500" />
             </div>
             <div>
               <h1 className="text-xl font-bold text-slate-900 tracking-tight">ClawnAI Core</h1>
@@ -116,10 +116,7 @@ export function AICommandCenter({ hook }: AICommandCenterProps) {
 
         {/* Input Form */}
         <form onSubmit={handleSubmit} className="relative group">
-          {/* Ambient glow behind input */}
-          <div className={`absolute -inset-1 rounded-2xl blur-lg transition-opacity duration-500 ${status !== 'idle' ? 'bg-blue-100 opacity-100' : 'bg-cyan-500/10 opacity-0 group-focus-within:opacity-100'}`} />
-          
-          <div className="relative flex items-center bg-white backdrop-blur-2xl shadow-lg border border-slate-300 rounded-2xl p-2 transition-colors focus-within:border-cyan-500/50 focus-within:bg-black/80">
+          <div className="relative flex items-center bg-white shadow-lg border border-slate-300 rounded-2xl p-2 transition-colors focus-within:border-nvidia-500/50">
             <input
               type="text"
               value={inputValue}

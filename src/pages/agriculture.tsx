@@ -2,6 +2,8 @@ import { useLocation } from 'wouter';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { PersistentCTA } from '@/components/PersistentCTA';
+import { SEO, ServiceSchema } from '@/components/SEO';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
 import { Leaf, Droplets, Sprout, Wheat, Map, ShieldCheck } from 'lucide-react';
@@ -69,10 +71,39 @@ export default function Agriculture() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-cc-darker text-gray-900 dark:text-white">
+      <SEO
+        title="Smart Agriculture"
+        description="Drone-powered precision farming with autonomous crop-health analytics and seasonal intelligence. Smart agriculture solutions for Zimbabwean farms."
+        keywords={[
+          'smart agriculture Zimbabwe',
+          'drone farming Africa',
+          'precision agriculture software',
+          'crop monitoring drone',
+          'agricultural technology Africa',
+          'smart farming Zimbabwe',
+        ]}
+        ogImage="/og-agriculture.png"
+      />
+      <ServiceSchema
+        name="Smart Agriculture"
+        description="Drone-powered precision farming with autonomous crop-health analytics and seasonal intelligence for Zimbabwean farms."
+        url="https://clawncore.com/platforms/smart-agriculture"
+        serviceType="Smart Agriculture Technology"
+      />
+
       <Header />
 
       <main>
         <section className="relative overflow-hidden bg-[#123017] px-4 sm:px-6 pb-16 sm:pb-20 pt-24 sm:pt-28 text-white md:pb-28 md:pt-36">
+          <div className="container relative z-10 mx-auto mb-8">
+            <Breadcrumbs
+              items={[
+                { name: 'Platforms', url: '/platforms' },
+                { name: 'Smart Agriculture', url: '/platforms/smart-agriculture' },
+              ]}
+              className="text-white/70"
+            />
+          </div>
           <div className="absolute inset-0 opacity-25">
             <img src="/drone hero.png" alt="Agricultural drone over crops" className="h-full w-full object-cover" />
           </div>

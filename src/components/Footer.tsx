@@ -9,11 +9,11 @@ const FOOTER_LINKS = {
   company: {
     title: 'Company',
     links: [
-      { name: 'About Us', href: '/#about' },
-      { name: 'Vision & Mission', href: '/#vision' },
+      { name: 'About Us', href: '/about' },
+      { name: 'Vision & Mission', href: '/about' },
       { name: 'Careers', href: '/careers' },
-      { name: 'News & Blog', href: '/' },
-      { name: 'Contact', href: '/#contact' },
+      { name: 'News & Blog', href: '/blog' },
+      { name: 'Contact', href: '/contact' },
     ],
   },
   solutions: {
@@ -29,20 +29,20 @@ const FOOTER_LINKS = {
   resources: {
     title: 'Resources',
     links: [
-      { name: 'Documentation', href: '/get-started' },
-      { name: 'API Reference', href: '/get-started' },
-      { name: 'Case Studies', href: '/#about' },
-      { name: 'System Status', href: '/get-started' },
-      { name: 'Partnerships', href: '/get-started' },
+      { name: 'Guides & Tutorials', href: '/resources' },
+      { name: 'Blog', href: '/blog' },
+      { name: 'FAQ', href: '/resources/faq/general' },
+      { name: 'Pricing', href: '/pricing' },
+      { name: 'Partnerships', href: '/partnerships' },
     ],
   },
   connect: {
     title: 'Connect',
     links: [
-      { name: 'Contact Sales', href: '/get-started' },
-      { name: 'Request Demo', href: '/get-started' },
-      { name: 'Enterprise', href: '/get-started' },
-      { name: 'Support', href: '/get-started' },
+      { name: 'Contact Sales', href: '/contact' },
+      { name: 'Get Started', href: '/get-started' },
+      { name: 'Pricing', href: '/pricing' },
+      { name: 'Partnerships', href: '/partnerships' },
     ],
   },
 };

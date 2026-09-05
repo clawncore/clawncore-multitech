@@ -1,6 +1,6 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, BrainCircuit, ShieldAlert, Cpu, Network, Map } from "lucide-react";
+import { ChevronRight, Activity, ShieldAlert, Cpu, Network, Map } from "lucide-react";
 import { CAREER_ROLES, DepartmentId, CareerRole } from "../../services/careersData";
 
 interface Props {
@@ -12,7 +12,7 @@ export function OpportunityPanel({ onHover, onApply }: Props) {
   
   const getIcon = (dept: DepartmentId) => {
     switch (dept) {
-      case 'ai': return <BrainCircuit className="w-5 h-5 text-blue-500" />;
+      case 'ai': return <Activity className="w-5 h-5 text-blue-500" />;
       case 'drone': return <Cpu className="w-5 h-5 text-sky-500" />;
       case 'cyber': return <ShieldAlert className="w-5 h-5 text-emerald-500" />;
       case 'cloud': return <Network className="w-5 h-5 text-indigo-500" />;

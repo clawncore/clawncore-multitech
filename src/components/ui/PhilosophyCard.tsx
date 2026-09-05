@@ -27,11 +27,7 @@ export function PhilosophyCard({ active, onClose }: PhilosophyCardProps) {
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           className="absolute bottom-24 left-1/2 -translate-x-1/2 w-[90vw] max-w-xl z-30 pointer-events-auto"
         >
-          {/* Ambient glow */}
-          <div className="absolute -inset-4 rounded-3xl blur-3xl opacity-15"
-               style={{ backgroundColor: active.color }} />
-
-          <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white backdrop-blur-3xl p-8">
+          <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8">
             {/* Top gradient accent */}
             <div className="absolute top-0 left-0 w-full h-[2px]"
                  style={{ background: `linear-gradient(to right, transparent, ${active.color}, transparent)` }} />

@@ -1,6 +1,6 @@
 import { useLocation } from 'wouter';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Clock, Sparkles } from 'lucide-react';
+import { ArrowLeft, Clock, Zap } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -31,8 +31,8 @@ export function ComingSoon({ title, subtitle, icon }: ComingSoonProps) {
           </div>
 
           {/* Coming Soon badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 text-xs font-mono tracking-widest uppercase mb-6">
-            <Sparkles className="w-3 h-3" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-nvidia-500/10 border border-nvidia-500/20 text-nvidia-500 text-xs font-mono tracking-widest uppercase mb-6">
+            <Zap className="w-3 h-3" />
             Coming Soon
           </div>
 

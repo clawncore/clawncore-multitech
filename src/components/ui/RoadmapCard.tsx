@@ -28,13 +28,7 @@ export function RoadmapCard({ activeNode, onClose }: RoadmapCardProps) {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="absolute bottom-20 left-1/2 -translate-x-1/2 w-[90vw] max-w-2xl z-30 pointer-events-auto"
         >
-          {/* Outer ambient glow */}
-          <div
-            className="absolute -inset-3 rounded-3xl blur-2xl opacity-30"
-            style={{ backgroundColor: activeNode.color }}
-          />
-
-          <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white backdrop-blur-3xl p-8 shadow-2xl">
+          <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-lg">
             {/* Top accent bar */}
             <div
               className="absolute top-0 left-0 w-full h-[2px]"

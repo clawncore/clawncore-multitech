@@ -1,5 +1,5 @@
 import { PROTOTYPES, PrototypeId } from "../../services/prototypes";
-import { BrainCircuit, ShieldAlert, Cpu } from "lucide-react";
+import { ShieldAlert, Cpu, Activity } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface Props {
@@ -35,7 +35,7 @@ export function ResearchPanel({ activePrototype, isSimulating }: Props) {
             <h2 className="text-xl font-bold text-slate-900 mt-2">{data.title}</h2>
           </div>
           <div className="bg-slate-50 p-3 rounded-xl border border-slate-100">
-            {activePrototype === 'neural' && <BrainCircuit className="w-6 h-6 text-indigo-500" />}
+            {activePrototype === 'neural' && <Activity className="w-6 h-6 text-indigo-500" />}
             {activePrototype === 'swarm' && <Cpu className="w-6 h-6 text-sky-500" />}
             {activePrototype === 'quantum' && <ShieldAlert className="w-6 h-6 text-emerald-500" />}
           </div>

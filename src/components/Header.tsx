@@ -34,16 +34,16 @@ const SOLUTIONS = [
 
 const RESOURCES = [
   { name: 'Documentation', href: '/get-started' },
-  { name: 'Case Studies', href: '/#about' },
+  { name: 'Case Studies', href: '/blog' },
   { name: 'API Reference', href: '/get-started' },
   { name: 'System Status', href: '/get-started' },
-  { name: 'Partnerships', href: '/get-started' },
-  { name: 'Contact Sales', href: '/get-started' },
+  { name: 'Partnerships', href: '/partnerships' },
+  { name: 'Contact Sales', href: '/contact' },
 ];
 
 const fullNavigation = [
-  { name: 'Home', href: '#home', type: 'scroll' },
-  { name: 'About', href: '#about', type: 'scroll' },
+  { name: 'Home', href: '/', type: 'route' },
+  { name: 'About', href: '/about', type: 'route' },
   { name: 'Marketplace', href: '/marketplace', type: 'route' },
   { name: 'Clawn Academy', href: '/clawn-academy', type: 'route' },
   { name: 'Agriculture', href: '/agriculture', type: 'route' },
@@ -144,7 +144,7 @@ export function Header() {
             { name: 'Marketplace', href: '/marketplace' },
             { name: 'Academy', href: '/clawn-academy' },
             { name: 'Agri Store', href: '/store' },
-            { name: 'Company', href: '/#about' },
+            { name: 'Company', href: '/about' },
           ].map((item) => (
             <Link key={item.name} href={item.href}>
               <span className="px-3 py-2 text-sm font-medium text-gray-700 dark:text-white/80 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg transition-colors cursor-pointer">

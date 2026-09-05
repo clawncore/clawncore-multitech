@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Brain, Network, Cloud, Shield, Leaf, Info } from 'lucide-react';
+import { Cpu, Network, Cloud, Shield, Leaf, Info } from 'lucide-react';
 import { EcosystemLayer, IntelligenceNode } from '../../services/telemetry';
 
 interface EcosystemControlsProps {
@@ -9,7 +9,7 @@ interface EcosystemControlsProps {
 }
 
 const LAYER_CONFIG = [
-  { id: 'ai' as EcosystemLayer, label: 'AI Infrastructure', icon: Brain, color: '#60a5fa' },
+  { id: 'ai' as EcosystemLayer, label: 'Compute Infrastructure', icon: Cpu, color: '#60a5fa' },
   { id: 'cloud' as EcosystemLayer, label: 'Cloud Nexus', icon: Cloud, color: '#2dd4bf' },
   { id: 'cyber' as EcosystemLayer, label: 'Cybersecurity Mesh', icon: Shield, color: '#60a5fa' },
   { id: 'drone' as EcosystemLayer, label: 'Drone Operations', icon: Network, color: '#f472b6' },

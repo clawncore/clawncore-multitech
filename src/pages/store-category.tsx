@@ -13,7 +13,7 @@ import { ChevronLeft, ChevronRight, Star, ShoppingCart, Sprout, Package } from '
 const ITEMS_PER_PAGE = 12;
 
 const categoryMeta: Record<string, { title: string; desc: string; image: string }> = {
-  drones: { title: 'Agricultural Drones', desc: 'Mapping, spraying, and crop monitoring aircraft', image: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80' },
+  drones: { title: 'Agricultural Drones', desc: 'Mapping, spraying, and crop monitoring aircraft', image: 'https://images.unsplash.com/photo-1713952160156-bb59cac789a9?auto=format&fit=crop&w=1200&q=80' },
   seeds: { title: 'Premium Seeds', desc: 'High-yield, disease-resistant seed varieties', image: 'https://images.unsplash.com/photo-1437252611977-07f74518abd7?auto=format&fit=crop&w=1200&q=80' },
   fertilizers: { title: 'Fertilizers & Nutrients', desc: 'Organic and synthetic crop nutrition', image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1200&q=80' },
   sensors: { title: 'Sensors & Monitoring', desc: 'Soil, weather, and crop health sensors', image: 'https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=1200&q=80' },

@@ -11,7 +11,7 @@ import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/lib/supabase';
 import {
   Search, Package, ChevronLeft, ChevronRight, Store, Star,
-  Brain, Cloud, Shield, Plane, Leaf, BarChart3, Smartphone,
+  Activity, Cloud, Shield, Plane, Leaf, BarChart3, Smartphone,
   Code, Cpu, Users, GraduationCap, ChevronRight as Chevron
 } from 'lucide-react';
 
@@ -40,12 +40,12 @@ interface Category {
 const ITEMS_PER_PAGE = 12;
 
 const iconMap: Record<string, React.FC<{ className?: string }>> = {
-  Brain, Cloud, Shield, Plane, Leaf, BarChart3, Smartphone,
+  Activity, Cloud, Shield, Plane, Leaf, BarChart3, Smartphone,
   Code, Cpu, Users, GraduationCap, Package,
 };
 
 const categoryColors: Record<string, string> = {
-  'ai-ml': 'from-purple-500 to-indigo-600',
+  'ai-ml': 'from-nvidia-500 to-blue-600',
   'cloud': 'from-cyan-500 to-blue-600',
   'cybersecurity': 'from-green-500 to-emerald-600',
   'drones': 'from-orange-500 to-red-600',
@@ -55,7 +55,7 @@ const categoryColors: Record<string, string> = {
   'software': 'from-blue-500 to-indigo-600',
   'hardware': 'from-slate-500 to-gray-600',
   'consulting': 'from-teal-500 to-cyan-600',
-  'courses': 'from-violet-500 to-purple-600',
+  'courses': 'from-violet-500 to-indigo-600',
 };
 
 export default function Marketplace() {
@@ -145,7 +145,7 @@ export default function Marketplace() {
       <section className="relative py-14 sm:py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-72 h-72 bg-blue-500 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-purple-500 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-nvidia-500 rounded-full blur-3xl" />
         </div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <Badge className="mb-4 bg-white/10 text-white border-white/20 hover:bg-white/20">

@@ -1,10 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, X, Shield, Brain, Cloud, BarChart3, Leaf, Plane, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, X, Shield, Cpu, Cloud, BarChart3, Leaf, Plane, CheckCircle2 } from 'lucide-react';
 import { Button } from './button';
 
 export interface ServiceData {
   id: string;
-  icon: 'shield' | 'brain' | 'cloud' | 'chart' | 'leaf' | 'plane';
+  icon: 'shield' | 'compute' | 'cloud' | 'chart' | 'leaf' | 'plane';
   label: string;
   title: string;
   description: string;
@@ -14,7 +14,7 @@ export interface ServiceData {
 }
 
 const ICON_MAP = {
-  shield: Shield, brain: Brain, cloud: Cloud,
+  shield: Shield, compute: Cpu, cloud: Cloud,
   chart: BarChart3, leaf: Leaf, plane: Plane,
 };
 
@@ -35,11 +35,7 @@ export function ServicePanel({ activeService, onClose }: ServicePanelProps) {
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           className="absolute right-4 top-1/2 -translate-y-1/2 md:right-10 w-[88vw] max-w-sm z-30 pointer-events-auto"
         >
-          {/* Ambient glow */}
-          <div className="absolute -inset-3 rounded-3xl blur-2xl opacity-20"
-               style={{ backgroundColor: activeService.color }} />
-
-          <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white backdrop-blur-3xl shadow-2xl">
+          <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg">
             {/* Top accent */}
             <div className="absolute top-0 left-0 w-full h-[2px]"
                  style={{ background: `linear-gradient(to right, transparent, ${activeService.color}, transparent)` }} />

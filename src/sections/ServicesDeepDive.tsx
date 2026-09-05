@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, Brain, Cloud, BarChart3, Leaf, Plane, Play, ChevronRight } from 'lucide-react';
+import { Shield, Activity, Cloud, BarChart3, Leaf, Plane, Play, ChevronRight } from 'lucide-react';
 
 export const SERVICES = [
   {
@@ -19,7 +19,7 @@ export const SERVICES = [
   },
   {
     id: 'ai',
-    icon: Brain,
+    icon: Activity,
     label: 'SYS.INTELLIGENCE',
     title: 'Distributed Neural Intelligence',
     description: 'Adaptive neural systems that learn from every data point — continuously refining decisions and predictions.',
